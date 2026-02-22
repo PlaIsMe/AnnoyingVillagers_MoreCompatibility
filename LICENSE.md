@@ -5,8 +5,7 @@ Copyright (c) 2026 pla_is_me
 This repository is **NOT open source**. It is **multi-rights**:
 
 - **Code** in this repository is licensed under the terms in Section 1 (**All Rights Reserved**).
-- **Third-party animations/assets** copied/cloned from other projects are **NOT licensed to you** and remain under the
-  original owner’s rights (Section 2). These files are included for compatibility/registration purposes only.
+- **Third-party animations/assets** copied/cloned from other projects are **NOT licensed to you** and remain under the original owner's rights (Section 2). These files are included for compatibility/registration purposes only.
 
 If a file is listed in `THIRD_PARTY_NOTICES.md`, it is **excluded** from the code license in Section 1.
 

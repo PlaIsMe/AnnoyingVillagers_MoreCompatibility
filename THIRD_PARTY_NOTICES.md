@@ -16,6 +16,12 @@ They remain **All Rights Reserved** by their original owner(s), unless the upstr
 
 **Paths / Files**
 - `AnnoyingVillagers_P1neroEpicBow/src/main/resources/assets/annoyingvillagers_p1nero_bow/animmodels/animations/biped/p1nero_bow_clone`
+
+### A2) EpicFight : Resurrection - Corrupt_Dog - All Rights Reserved
+- Type: cloned/copied animations used for registration/compatibility
+- Source: https://www.curseforge.com/minecraft/mc-mods/epicfight-resurrection
+
+**Paths / Files**
 - `AnnoyingVillagers_Resurrection/src/main/resources/assets/annoyingvillagers_resurrection/animmodels/animations/biped/cdmoveset_clone`
 
 **Notes**
