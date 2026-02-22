@@ -1,0 +1,38 @@
+{
+  "MAINHAND": [
+    "katana",
+    "s_stone_spear",
+    "s_iron_spear",
+    "s_golden_spear",
+    "s_diamond_spear",
+    "s_stone_tachi",
+    "s_golden_tachi",
+    "s_iron_tachi",
+    "s_diamond_tachi",
+    "s_stone_sword",
+    "s_iron_sword",
+    "s_golden_sword",
+    "s_diamond_sword",
+    "s_stone_longsword",
+    "s_iron_longsword",
+    "s_golden_longsword",
+    "s_diamond_longsword",
+    "s_stone_greatsword",
+    "s_iron_greatsword",
+    "s_golden_greatsword",
+    "s_diamond_greatsword",
+    "s_iron_dagger",
+    "s_diamond_dagger",
+    "great_tachi"
+  ],
+  "OFFHAND": [
+  ],
+  "FEET": [
+  ],
+  "LEGS": [
+  ],
+  "CHEST": [
+  ],
+  "HEAD": [
+  ]
+}

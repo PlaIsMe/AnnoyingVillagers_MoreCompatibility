@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.pla.annoyingvillagers_p1nero_bow.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "annoyingvillagers_p1nero_bow.mixins.refmap.json",
+  "mixins": [
+    "AVNpcMixin",
+    "MobPatchCommonMixin"
+  ],
+  "client": [
+  ],
+  "minVersion": "0.8"
+}
