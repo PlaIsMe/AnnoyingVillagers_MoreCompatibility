@@ -57,7 +57,7 @@ public class AnnoyingVillagersResurrectionExecutionType {
     public static final ExecutionTypeManager.Type GREATSWORD =
             new ExecutionTypeManager.Type(
                     AVEpicFightResurrectionAnimations.GREATSWORD_EXECUTE, AVEpicFightResurrectionAnimations.GREATSWORD_EXECUTE_HIT,
-                    new Vec3(4.0F, 0.0F, 0.0F), -10.0F, 100);
+                    new Vec3(3.0F, 0.0F, -0.5F), -10.0F, 100);
 
     public static final ExecutionTypeManager.Type YAMATO =
             new ExecutionTypeManager.Type(
