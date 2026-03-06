@@ -29,5 +29,5 @@ description='''${mod_description}'''
     modId="cdmoveset"
     mandatory=true
     versionRange="[0,)"
-    ordering="NONE"
+    ordering="AFTER"
     side="BOTH"

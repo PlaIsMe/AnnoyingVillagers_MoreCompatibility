@@ -4,6 +4,7 @@ import com.pla.annoyingvillagers.init.AnnoyingVillagersModItems;
 import com.pla.annoyingvillagers_resurrection.AnnoyingVillagers_Resurrection;
 import com.pla.annoyingvillagers_resurrection.gameasset.AnnoyingVillagersResurrectionExecutionType;
 import net.corruptdog.cdm.world.CorruptWeaponCategories;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -13,8 +14,29 @@ import reascer.wom.world.capabilities.item.WOMWeaponCategories;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @Mod.EventBusSubscriber(modid = AnnoyingVillagers_Resurrection.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ExecuteEvent {
+    private static final List<ResourceLocation> listAvSwords = new ArrayList<>(Arrays.asList(
+            AnnoyingVillagersModItems.BLACK_FIRE_SWORD.getId(),
+            AnnoyingVillagersModItems.BLUE_FLAME_SWORD.getId(),
+            AnnoyingVillagersModItems.CLOW_SWORD.getId(),
+            AnnoyingVillagersModItems.DIAMOND_ATTRACTOR_SWORD.getId(),
+            AnnoyingVillagersModItems.DIAMOND_BLASTER_SWORD.getId(),
+            AnnoyingVillagersModItems.DIAMOND_SABRE.getId(),
+            AnnoyingVillagersModItems.DNAX_HOOKED_SWORD.getId(),
+            AnnoyingVillagersModItems.FLANKER_HOOKED_SWORD.getId(),
+            AnnoyingVillagersModItems.JADE_SWORD.getId(),
+            AnnoyingVillagersModItems.NETHERITE_GREATBLADE.getId(),
+            AnnoyingVillagersModItems.PALADIN_SWORD.getId(),
+            AnnoyingVillagersModItems.RED_DIAMOND_SWORD.getId(),
+            AnnoyingVillagersModItems.RUBY_SWORD.getId(),
+            AnnoyingVillagersModItems.RUBY_KNIGHT_SWORD.getId(),
+            AnnoyingVillagersModItems.THUNDER_DIAMOND_BLADE.getId()
+    ));
 
     @SubscribeEvent
     public static void registerExecution(RegisterCustomExecutionEvent event){
@@ -26,7 +48,7 @@ public class ExecuteEvent {
         event.RegisterExecutionByItem(AnnoyingVillagersModItems.NULL_WEAPON.getId(), AnnoyingVillagersResurrectionExecutionType.STRANGLE);
         event.RegisterExecutionByItem(AnnoyingVillagersModItems.ENDER_AEGIS.getId(), AnnoyingVillagersResurrectionExecutionType.FIST);
         event.RegisterExecutionByItem(AnnoyingVillagersModItems.CRAFTING_TABLE.getId(), AnnoyingVillagersResurrectionExecutionType.DUAL_GREATSWORD);
-        event.registerExecutionByItem(AnnoyingVillagersModItems.HARD_GREATSWORD.getId(), CapabilityItem.Styles.COMMON, (item, livingEntityPatch) -> {
+        event.registerExecutionByItem(AnnoyingVillagersModItems.GREAT_SWORD.getId(), CapabilityItem.Styles.COMMON, (item, livingEntityPatch) -> {
             WeaponCategory weaponCategory = livingEntityPatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory();
             if (livingEntityPatch.isOffhandItemValid() && weaponCategory == CapabilityItem.WeaponCategories.SHIELD) {
                 return AnnoyingVillagersResurrectionExecutionType.SHIELD;
@@ -40,102 +62,16 @@ public class ExecuteEvent {
             }
             return AnnoyingVillagersResurrectionExecutionType.STAB;
         });
-        event.registerExecutionByItem(AnnoyingVillagersModItems.DIAMOND_SWORD.getId(), CapabilityItem.Styles.ONE_HAND, (item, livingEntityPatch) -> {
-            WeaponCategory weaponCategory = livingEntityPatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory();
-            if (livingEntityPatch.isOffhandItemValid() && weaponCategory == CapabilityItem.WeaponCategories.SHIELD) {
-                return AnnoyingVillagersResurrectionExecutionType.SHIELD;
-            }
-            return AnnoyingVillagersResurrectionExecutionType.STAB;
+        listAvSwords.forEach(avSword -> {
+            event.registerExecutionByItem(avSword, CapabilityItem.Styles.ONE_HAND, (item, livingEntityPatch) -> {
+                WeaponCategory weaponCategory = livingEntityPatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory();
+                if (livingEntityPatch.isOffhandItemValid() && weaponCategory == CapabilityItem.WeaponCategories.SHIELD) {
+                    return AnnoyingVillagersResurrectionExecutionType.SHIELD;
+                }
+                return AnnoyingVillagersResurrectionExecutionType.STAB;
+            });
+            event.registerExecutionByItem(avSword, CapabilityItem.Styles.TWO_HAND, AnnoyingVillagersResurrectionExecutionType.DUAL_STAB);
         });
-        event.registerExecutionByItem(AnnoyingVillagersModItems.DIAMOND_SWORD.getId(), CapabilityItem.Styles.TWO_HAND, AnnoyingVillagersResurrectionExecutionType.DUAL_STAB);
-        event.registerExecutionByItem(AnnoyingVillagersModItems.DIAMOND_BLADE.getId(), CapabilityItem.Styles.ONE_HAND, (item, livingEntityPatch) -> {
-            WeaponCategory weaponCategory = livingEntityPatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory();
-            if (livingEntityPatch.isOffhandItemValid() && weaponCategory == CapabilityItem.WeaponCategories.SHIELD) {
-                return AnnoyingVillagersResurrectionExecutionType.SHIELD;
-            }
-            return AnnoyingVillagersResurrectionExecutionType.STAB;
-        });
-        event.registerExecutionByItem(AnnoyingVillagersModItems.DIAMOND_BLADE.getId(), CapabilityItem.Styles.TWO_HAND, AnnoyingVillagersResurrectionExecutionType.STAB);
-        event.registerExecutionByItem(AnnoyingVillagersModItems.HOOKED_DIAMOND_SWORD.getId(), CapabilityItem.Styles.ONE_HAND, (item, livingEntityPatch) -> {
-            WeaponCategory weaponCategory = livingEntityPatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory();
-            if (livingEntityPatch.isOffhandItemValid() && weaponCategory == CapabilityItem.WeaponCategories.SHIELD) {
-                return AnnoyingVillagersResurrectionExecutionType.SHIELD;
-            }
-            return AnnoyingVillagersResurrectionExecutionType.STAB;
-        });
-        event.registerExecutionByItem(AnnoyingVillagersModItems.HOOKED_DIAMOND_SWORD.getId(), CapabilityItem.Styles.TWO_HAND, AnnoyingVillagersResurrectionExecutionType.STAB);
-        event.registerExecutionByItem(AnnoyingVillagersModItems.PALADIN_SWORD.getId(), CapabilityItem.Styles.ONE_HAND, (item, livingEntityPatch) -> {
-            WeaponCategory weaponCategory = livingEntityPatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory();
-            if (livingEntityPatch.isOffhandItemValid() && weaponCategory == CapabilityItem.WeaponCategories.SHIELD) {
-                return AnnoyingVillagersResurrectionExecutionType.SHIELD;
-            }
-            return AnnoyingVillagersResurrectionExecutionType.STAB;
-        });
-        event.registerExecutionByItem(AnnoyingVillagersModItems.PALADIN_SWORD.getId(), CapabilityItem.Styles.TWO_HAND, AnnoyingVillagersResurrectionExecutionType.STAB);
-        event.registerExecutionByItem(AnnoyingVillagersModItems.BLUE_FLAME_SWORD.getId(), CapabilityItem.Styles.ONE_HAND, (item, livingEntityPatch) -> {
-            WeaponCategory weaponCategory = livingEntityPatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory();
-            if (livingEntityPatch.isOffhandItemValid() && weaponCategory == CapabilityItem.WeaponCategories.SHIELD) {
-                return AnnoyingVillagersResurrectionExecutionType.SHIELD;
-            }
-            return AnnoyingVillagersResurrectionExecutionType.STAB;
-        });
-        event.registerExecutionByItem(AnnoyingVillagersModItems.BLUE_FLAME_SWORD.getId(), CapabilityItem.Styles.TWO_HAND, AnnoyingVillagersResurrectionExecutionType.STAB);
-        event.registerExecutionByItem(AnnoyingVillagersModItems.DIAMOND_MAGNET_SWORD.getId(), CapabilityItem.Styles.ONE_HAND, (item, livingEntityPatch) -> {
-            WeaponCategory weaponCategory = livingEntityPatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory();
-            if (livingEntityPatch.isOffhandItemValid() && weaponCategory == CapabilityItem.WeaponCategories.SHIELD) {
-                return AnnoyingVillagersResurrectionExecutionType.SHIELD;
-            }
-            return AnnoyingVillagersResurrectionExecutionType.STAB;
-        });
-        event.registerExecutionByItem(AnnoyingVillagersModItems.DIAMOND_MAGNET_SWORD.getId(), CapabilityItem.Styles.TWO_HAND, AnnoyingVillagersResurrectionExecutionType.STAB);
-        event.registerExecutionByItem(AnnoyingVillagersModItems.DIAMOND_SABER.getId(), CapabilityItem.Styles.ONE_HAND, (item, livingEntityPatch) -> {
-            WeaponCategory weaponCategory = livingEntityPatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory();
-            if (livingEntityPatch.isOffhandItemValid() && weaponCategory == CapabilityItem.WeaponCategories.SHIELD) {
-                return AnnoyingVillagersResurrectionExecutionType.SHIELD;
-            }
-            return AnnoyingVillagersResurrectionExecutionType.STAB;
-        });
-        event.registerExecutionByItem(AnnoyingVillagersModItems.DIAMOND_SABER.getId(), CapabilityItem.Styles.TWO_HAND, AnnoyingVillagersResurrectionExecutionType.STAB);
-        event.registerExecutionByItem(AnnoyingVillagersModItems.HOOKED_GOLDEN_SWORD.getId(), CapabilityItem.Styles.ONE_HAND, (item, livingEntityPatch) -> {
-            WeaponCategory weaponCategory = livingEntityPatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory();
-            if (livingEntityPatch.isOffhandItemValid() && weaponCategory == CapabilityItem.WeaponCategories.SHIELD) {
-                return AnnoyingVillagersResurrectionExecutionType.SHIELD;
-            }
-            return AnnoyingVillagersResurrectionExecutionType.STAB;
-        });
-        event.registerExecutionByItem(AnnoyingVillagersModItems.HOOKED_GOLDEN_SWORD.getId(), CapabilityItem.Styles.TWO_HAND, AnnoyingVillagersResurrectionExecutionType.STAB);
-        event.registerExecutionByItem(AnnoyingVillagersModItems.HOOKED_IRON_SWORD.getId(), CapabilityItem.Styles.ONE_HAND, (item, livingEntityPatch) -> {
-            WeaponCategory weaponCategory = livingEntityPatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory();
-            if (livingEntityPatch.isOffhandItemValid() && weaponCategory == CapabilityItem.WeaponCategories.SHIELD) {
-                return AnnoyingVillagersResurrectionExecutionType.SHIELD;
-            }
-            return AnnoyingVillagersResurrectionExecutionType.STAB;
-        });
-        event.registerExecutionByItem(AnnoyingVillagersModItems.HOOKED_IRON_SWORD.getId(), CapabilityItem.Styles.TWO_HAND, AnnoyingVillagersResurrectionExecutionType.STAB);
-        event.registerExecutionByItem(AnnoyingVillagersModItems.EMERALD_SWORD.getId(), CapabilityItem.Styles.ONE_HAND, (item, livingEntityPatch) -> {
-            WeaponCategory weaponCategory = livingEntityPatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory();
-            if (livingEntityPatch.isOffhandItemValid() && weaponCategory == CapabilityItem.WeaponCategories.SHIELD) {
-                return AnnoyingVillagersResurrectionExecutionType.SHIELD;
-            }
-            return AnnoyingVillagersResurrectionExecutionType.STAB;
-        });
-        event.registerExecutionByItem(AnnoyingVillagersModItems.EMERALD_SWORD.getId(), CapabilityItem.Styles.TWO_HAND, AnnoyingVillagersResurrectionExecutionType.STAB);
-        event.registerExecutionByItem(AnnoyingVillagersModItems.RED_DIAMOND_SWORD.getId(), CapabilityItem.Styles.ONE_HAND, (item, livingEntityPatch) -> {
-            WeaponCategory weaponCategory = livingEntityPatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory();
-            if (livingEntityPatch.isOffhandItemValid() && weaponCategory == CapabilityItem.WeaponCategories.SHIELD) {
-                return AnnoyingVillagersResurrectionExecutionType.SHIELD;
-            }
-            return AnnoyingVillagersResurrectionExecutionType.STAB;
-        });
-        event.registerExecutionByItem(AnnoyingVillagersModItems.RED_DIAMOND_SWORD.getId(), CapabilityItem.Styles.TWO_HAND, AnnoyingVillagersResurrectionExecutionType.STAB);
-        event.registerExecutionByItem(AnnoyingVillagersModItems.RUBY_SWORD.getId(), CapabilityItem.Styles.ONE_HAND, (item, livingEntityPatch) -> {
-            WeaponCategory weaponCategory = livingEntityPatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory();
-            if (livingEntityPatch.isOffhandItemValid() && weaponCategory == CapabilityItem.WeaponCategories.SHIELD) {
-                return AnnoyingVillagersResurrectionExecutionType.SHIELD;
-            }
-            return AnnoyingVillagersResurrectionExecutionType.STAB;
-        });
-        event.registerExecutionByItem(AnnoyingVillagersModItems.RUBY_SWORD.getId(), CapabilityItem.Styles.TWO_HAND, AnnoyingVillagersResurrectionExecutionType.STAB);
         event.registerExecutionByCategory(CapabilityItem.WeaponCategories.SWORD, CapabilityItem.Styles.COMMON, ((item, livingEntityPatch) -> {
             WeaponCategory weaponCategory = livingEntityPatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory();
             if (livingEntityPatch.isOffhandItemValid() && weaponCategory == CapabilityItem.WeaponCategories.SHIELD) {
