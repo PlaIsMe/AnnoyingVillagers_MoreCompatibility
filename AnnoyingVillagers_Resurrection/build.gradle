@@ -64,6 +64,7 @@ repositories {
         url = uri("https://cursemaven.com")
     }
     mavenLocal()
+    flatDir { dir 'libs' }
 }
 
 mixin {
@@ -74,9 +75,9 @@ mixin {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     implementation fg.deobf("curse.maven:epicfight-resurrection-1151542:6931390")
-    implementation fg.deobf("curse.maven:annoying-villagers-herobrine-invasion-1308998:7718144")
+    implementation fg.deobf("curse.maven:annoying-villagers-herobrine-invasion-1308998:7871697")
     implementation fg.deobf("curse.maven:epic-fight-mod-405076:7617763")
-    implementation fg.deobf("curse.maven:combat-evolution-1377795:7708585")
+    implementation fg.deobf("curse.maven:combat-evolution-1377795:7866224")
     implementation fg.deobf("curse.maven:weapons-of-miracles-epicfight-918614:7517612")
 
     implementation fg.deobf("curse.maven:epicfight-clash-blade-1408812:7662809")

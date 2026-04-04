@@ -48,6 +48,7 @@ public class ExecuteEvent {
         event.RegisterExecutionByItem(AnnoyingVillagersModItems.NULL_WEAPON.getId(), AnnoyingVillagersResurrectionExecutionType.STRANGLE);
         event.RegisterExecutionByItem(AnnoyingVillagersModItems.ENDER_AEGIS.getId(), AnnoyingVillagersResurrectionExecutionType.FIST);
         event.RegisterExecutionByItem(AnnoyingVillagersModItems.CRAFTING_TABLE.getId(), AnnoyingVillagersResurrectionExecutionType.DUAL_GREATSWORD);
+        event.RegisterExecutionByItem(AnnoyingVillagersModItems.BLUE_DEMON_TRIDENT.getId(), AnnoyingVillagersResurrectionExecutionType.TRIDENT);
         event.registerExecutionByItem(AnnoyingVillagersModItems.GREAT_SWORD.getId(), CapabilityItem.Styles.COMMON, (item, livingEntityPatch) -> {
             WeaponCategory weaponCategory = livingEntityPatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory();
             if (livingEntityPatch.isOffhandItemValid() && weaponCategory == CapabilityItem.WeaponCategories.SHIELD) {
