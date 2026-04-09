@@ -1,7 +1,6 @@
 package com.pla.annoyingvillagers_p1nero_bow.gameasset;
 
 import com.p1nero.epicfightbow.gameassets.EFBowColliders;
-import com.pla.annoyingvillagers.AnnoyingVillagers;
 import com.pla.annoyingvillagers.animations.BowAttackAnimation;
 import com.pla.annoyingvillagers.gameasset.AVAnimations;
 import com.pla.annoyingvillagers.util.BowFunction;

@@ -5,9 +5,12 @@
   "refmap": "annoyingvillagers_p1nero_bow.mixins.refmap.json",
   "mixins": [
     "AVNpcMixin",
-    "MobPatchCommonMixin"
+    "MobPatchCommonMixin",
+    "AbstractArrowMixin",
+    "PPlayerRendererMixin",
+    "FirstPersonRendererMixin",
+    "MixinPHumanoidRenderer"
   ],
-  "client": [
-  ],
+  "client": [],
   "minVersion": "0.8"
 }

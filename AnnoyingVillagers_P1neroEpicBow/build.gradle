@@ -19,6 +19,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
     mappings channel: mapping_channel, version: mapping_version
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
     copyIdeResources = true
     runs {
         configureEach {
@@ -64,6 +65,7 @@ repositories {
         url = uri("https://cursemaven.com")
     }
     mavenLocal()
+    flatDir { dir 'libs' }
 }
 
 mixin {
@@ -74,9 +76,16 @@ mixin {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     implementation fg.deobf("curse.maven:p1neros-epic-bow-1338443:7144823")
-    implementation fg.deobf("curse.maven:annoying-villagers-herobrine-invasion-1308998:7670770")
-    implementation fg.deobf("curse.maven:epic-fight-mod-405076:7617763")
-    implementation fg.deobf("curse.maven:combat-evolution-1377795:7647549")
+    implementation fg.deobf("curse.maven:annoying-villagers-herobrine-invasion-1308998:7871697")
+    implementation fg.deobf("curse.maven:epic-fight-mod-405076:7878000")
+    implementation fg.deobf("curse.maven:combat-evolution-1377795:7866224")
+    implementation fg.deobf("curse.maven:weapons-of-miracles-epicfight-918614:7517612")
+    implementation fg.deobf("curse.maven:epicfight-clash-blade-1408812:7855699")
+    implementation fg.deobf("curse.maven:player-mobs-430513:5780869")
+
+    compileOnly "io.github.llamalad7:mixinextras-common:0.5.0"
+    annotationProcessor "io.github.llamalad7:mixinextras-common:0.5.0"
+    runtimeOnly "io.github.llamalad7:mixinextras-forge:0.5.0"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
