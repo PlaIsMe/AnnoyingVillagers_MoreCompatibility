@@ -11,7 +11,7 @@ version = mod_version
 group = mod_group_id
 
 base {
-    archivesName = "AnnoyingVillagers-Resurrection-1.20.1"
+    archivesName = "AnnoyingVillagers-MoreDual-1.20.1"
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -68,22 +68,24 @@ repositories {
 }
 
 mixin {
-    add sourceSets.main, 'annoyingvillagers_resurrection.mixins.refmap.json'
-    config 'annoyingvillagers_resurrection.mixins.json'
+    add sourceSets.main, 'annoyingvillagers_moredual.mixins.refmap.json'
+    config 'annoyingvillagers_moredual.mixins.json'
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    implementation fg.deobf("curse.maven:epicfight-resurrection-1151542:6931390")
+    implementation fg.deobf("curse.maven:epic-fight-dual-axes-1174112:7647115")
+    implementation fg.deobf("curse.maven:epic-fight-dual-greatswords-updated-1224015:7647220")
+
     implementation fg.deobf("curse.maven:annoying-villagers-herobrine-invasion-1308998:7871697")
-    implementation fg.deobf("curse.maven:epic-fight-mod-405076:7617763")
-    implementation fg.deobf("curse.maven:combat-evolution-1377795:7908514")
+    implementation fg.deobf("curse.maven:epic-fight-mod-405076:7899801")
+    implementation fg.deobf("curse.maven:combat-evolution-1377795:7866224")
     implementation fg.deobf("curse.maven:weapons-of-miracles-epicfight-918614:7517612")
 
-    implementation fg.deobf("curse.maven:epicfight-clash-blade-1408812:7662809")
-    implementation fg.deobf("curse.maven:weapons-of-miracles-epicfight-918614:7517612")
+    implementation fg.deobf("curse.maven:epicfight-clash-blade-1408812:7855699")
     implementation fg.deobf("curse.maven:player-mobs-430513:5780869")
 
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.5.0"))
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 

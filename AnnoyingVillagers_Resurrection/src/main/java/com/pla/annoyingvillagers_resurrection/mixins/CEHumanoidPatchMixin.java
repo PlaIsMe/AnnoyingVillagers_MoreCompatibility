@@ -21,6 +21,7 @@ import yesman.epicfight.api.animation.LivingMotion;
 import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.animation.types.StaticAnimation;
 import yesman.epicfight.gameasset.Animations;
+import yesman.epicfight.world.capabilities.entitypatch.Factions;
 import yesman.epicfight.world.capabilities.entitypatch.MobPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.capabilities.item.Style;
@@ -43,7 +44,7 @@ public abstract class CEHumanoidPatchMixin {
 
 
     @Inject(method = "<init>", at = @At("RETURN"))
-    private void addMoreWeaponMotions(CallbackInfo ci) {
+    private void addMoreWeaponMotions(Factions factions, CallbackInfo ci) {
         CEHumanoidPatch self = (CEHumanoidPatch) (Object) this;
 
         if (self instanceof PlayerNpcPatch || self instanceof LowHerobrineClonePatch) {
