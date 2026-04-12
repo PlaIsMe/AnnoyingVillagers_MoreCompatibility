@@ -1,6 +1,6 @@
 package com.pla.annoyingvillagers_moredual;
 import com.mojang.logging.LogUtils;
-import com.pla.annoyingvillagers_moredual.capabiliities.WeaponCapabilityPresets;
+import com.pla.annoyingvillagers_moredual.capabilities.WeaponCapabilityPresets;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;

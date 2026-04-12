@@ -1,4 +1,4 @@
-package com.pla.annoyingvillagers_moredual.capabiliities;
+package com.pla.annoyingvillagers_moredual.capabilities;
 
 import M6FGR.dualaxes.gameassets.DualAxesAnimations;
 import M6FGR.dualaxes.gameassets.DualAxesSkills;
