@@ -8,6 +8,9 @@ import com.pla.annoyingvillagers.mobpatch.LowHerobrineClonePatch;
 import com.pla.annoyingvillagers.mobpatch.PlayerNpcPatch;
 import com.pla.annoyingvillagers_moredual.combatbehaviour.PlayerNpcDualAxe;
 import com.pla.annoyingvillagers_moredual.combatbehaviour.PlayerNpcDualGreatsword;
+import com.pla.annoyingvillagers_moredual.combatbehaviour.PlayerNpcXAxe;
+import com.pla.annoyingvillagers_moredual.combatbehaviour.PlayerNpcXGreatsword;
+import net.minecraftforge.fml.ModList;
 import net.shelmarow.combat_evolution.ai.CECombatBehaviors;
 import net.shelmarow.combat_evolution.ai.CEHumanoidPatch;
 import org.spongepowered.asm.mixin.Mixin;
@@ -61,7 +64,7 @@ public abstract class CEHumanoidPatchMixin {
             weaponAttackMotions
                     .put(CapabilityItem.WeaponCategories.GREATSWORD,
                             ImmutableMap.of(
-                                    CapabilityItem.Styles.TWO_HAND, PlayerNpcGreatsword.GREATSWORD,
+                                    CapabilityItem.Styles.TWO_HAND, ModList.get().isLoaded("epicfightx") ? PlayerNpcXGreatsword.X_GREATSWORD : PlayerNpcGreatsword.GREATSWORD,
                                     CapabilityItem.Styles.OCHS, PlayerNpcDualGreatsword.DUAL_GREATSWORD));
             guardHitMotions.put(CapabilityItem.WeaponCategories.GREATSWORD,
                     ImmutableMap.of(
@@ -91,7 +94,7 @@ public abstract class CEHumanoidPatchMixin {
                     .put(CapabilityItem.WeaponCategories.AXE,
                             ImmutableMap.of(
                                     CapabilityItem.Styles.TWO_HAND, PlayerNpcDualAxe.DUAL_AXE,
-                                    CapabilityItem.Styles.ONE_HAND, PlayerNpcDualAxe.AXE)
+                                    CapabilityItem.Styles.ONE_HAND, ModList.get().isLoaded("epicfightx") ? PlayerNpcXAxe.X_AXE : PlayerNpcDualAxe.AXE)
                     );
             guardHitMotions.put(CapabilityItem.WeaponCategories.AXE,
                     ImmutableMap.of(

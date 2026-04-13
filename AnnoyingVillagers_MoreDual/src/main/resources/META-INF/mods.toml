@@ -43,3 +43,9 @@ description='''${mod_description}'''
     versionRange="[0,)"
     ordering="AFTER"
     side="BOTH"
+[[dependencies.annoyingvillagers_moredual]]
+    modId="epicfightx"
+    mandatory=true
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"

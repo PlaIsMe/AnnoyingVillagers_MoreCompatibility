@@ -1,0 +1,329 @@
+== X SWORD ==
+help me mix there movement
+group 1
+AnimationsX.SWORD_DUAL_AUTO1 -> AnimationsX.SWORD_DUAL_AUTO2 -> AnimationsX.SWORD_DUAL_AUTO3 -> ExtraAnimations.SWORD_DUAL_AUTO4 -> ExtraAnimations.SWORD_DUAL_AUTO5
+
+group 2
+Animations.DAGGER_DUAL_DASH
+Animations.LONGSWORD_AUTO2
+AVAnimations.DUAL_DANCING_EDGE
+AVAnimations.DUAL_SWORD_DANCING_EDGE
+
+group 3
+AnimationsX.SWORD_DUAL_DASH
+AnimationsX.SWORD_DUAL_AIR_SLASH
+AnimationsX.DANCING_EDGE
+
+group 4
+AVAnimations.KICK_1
+AVAnimations.KICK_2
+AVAnimations.KICK_3
+AVAnimations.KICK_4
+AVAnimations.KICK_C
+AVAnimations.KICK_RUSH
+AVAnimations.KICK_H
+
+group 5
+Animations.BIPED_ROLL_BACKWARD
+Animations.BIPED_ROLL_FORWARD
+
+help me mix into a combo chain like this
+
+all of element should has
+.custom(CombatCommon::canPerformNormalAttackLogic)
+.withinDistance(0.0D, 3.0D)
+
+each combo should be 5 to 10 element has at least 1 to 3 animation from group 1, but it should follow the order in the group 1 from to bottom, 1 animation from group 2, 1 from group 3, 1 from group 4, 1 from group 5 follow the tab rule from the code I sent, no need to create new function or clean code, no comment, for .withinDistance(0.0D, 3.0D) begin of the chain can be 0 3 next can be 0 3 but next should be increased to 0 4, 0 4 and next should be 0 5
+The combo chain should be like example first animation from group 1 -> any from group 2 or 3 or 4 or 5 -> second animation from group 1 or any from group 2 or 3 or 4 or 5 -> third animation from group 1 or any from group 2 or 3 or 4 or 5
+help me create 15 different moves, and please generate into one code block to let me copy everything in a button
+
+== X_SPEAR ==
+help me mix there movement
+group 1
+AnimationsX.SPEAR_TWOHAND_AUTO1 -> AnimationsX.SPEAR_TWOHAND_AUTO2 -> ExtraAnimations.SPEAR_TWOHAND_AUTO3 -> ExtraAnimations.SPEAR_TWOHAND_AUTO4 -> ExtraAnimations.SPEAR_TWOHAND_AUTO5
+
+group 2
+AVAnimations.SPEAR_THRUST -> AVAnimations.SPEAR_THRUST -> AVAnimations.SPEAR_THRUST // counted as one
+
+group 3
+ExtraAnimations.SPEAR_TWOHAND_DASH
+AnimationsX.SPEAR_TWOHAND_AIR_SLASH
+AnimationsX.GRASPING_SPIRAL_FIRST -> AnimationsX.GRASPING_SPIRAL_SECOND // counted as one
+
+group 4
+AVAnimations.KICK_1
+AVAnimations.KICK_2
+AVAnimations.KICK_3
+AVAnimations.KICK_4
+AVAnimations.KICK_C
+AVAnimations.KICK_RUSH
+AVAnimations.KICK_H
+
+group 5
+Animations.BIPED_ROLL_BACKWARD
+Animations.BIPED_ROLL_FORWARD
+
+help me mix into a combo chain like this
+
+all of element should has
+.custom(CombatCommon::canPerformNormalAttackLogic)
+.withinDistance(0.0D, 3.0D)
+
+each combo should be 5 to 10 element has at least 1 to 3 animation from group 1, but it should follow the order in the group 1 from to bottom, 1 animation from group 2, 1 from group 3, 1 from group 4, 1 from group 5 follow the tab rule from the code I sent, no need to create new function or clean code, no comment, for .withinDistance(0.0D, 3.0D) begin of the chain can be 0 3 next can be 0 3 but next should be increased to 0 4, 0 4 and next should be 0 5
+The combo chain should be like example first animation from group 1 -> any from group 2 or 3 or 4 or 5 -> second animation from group 1 or any from group 2 or 3 or 4 or 5 -> third animation from group 1 or any from group 2 or 3 or 4 or 5
+help me create 15 different moves, and please generate into one code block to let me copy everything in a button
+
+=== X_UCHIGATANA ===
+help me mix there movement
+group 1
+AnimationsX.UCHIGATANA_AUTO1
+AnimationsX.UCHIGATANA_AUTO2
+AnimationsX.UCHIGATANA_AUTO3
+
+group 2
+AVAnimations.SWORD_HEAVY_AUTO_1
+AVAnimations.SWORD_HEAVY_AUTO_2
+AVAnimations.SWORD_HEAVY_AUTO_3
+AnimationsX.UCHIGATANA_SHEATHING_AUTO
+Animations.BATTOJUTSU -> Animations.BATTOJUTSU_DASH // count as one
+
+group 3
+AnimationsX.UCHIGATANA_DASH
+AnimationsX.UCHIGATANA_AIR_SLASH
+AnimationsX.UCHIGATANA_SHEATHING_DASH
+
+group 4
+AVAnimations.KICK_1
+AVAnimations.KICK_2
+AVAnimations.KICK_3
+AVAnimations.KICK_4
+AVAnimations.KICK_C
+AVAnimations.KICK_RUSH
+AVAnimations.KICK_H
+
+group 6
+Animations.BIPED_ROLL_BACKWARD
+Animations.BIPED_ROLL_FORWARD
+
+help me mix into a combo chain like this
+
+all of element should has
+.custom(CombatCommon::canPerformNormalAttackLogic)
+.withinDistance(0.0D, 3.0D)
+
+each combo should be 5 to 10 element has at least 1 to 3 animation from group 1, but it should follow the order in the group 1 from to bottom, 1 animation from group 2, 1 from group 3, 1 from group 4, 1 from group 5 follow the tab rule from the code I sent, no need to create new function or clean code, no comment, for .withinDistance(0.0D, 3.0D) begin of the chain can be 0 3 next can be 0 3 but next should be increased to 0 4, 0 4 and next should be 0 5
+The combo chain should be like example first animation from group 1 -> any from group 2 or 3 or 4 or 5 -> second animation from group 1 or any from group 2 or 3 or 4 or 5 -> third animation from group 1 or any from group 2 or 3 or 4 or 5
+help me create 15 different moves, and please generate into one code block to let me copy everything in a button
+
+
+=== X_TACHI ===
+help me mix there movement
+group 1
+AnimationsX.TACHI_AUTO1 -> AnimationsX.TACHI_AUTO2 -> AnimationsX.TACHI_AUTO3 -> ExtraAnimations.TACHI_AUTO4 -> ExtraAnimations.TACHI_AUTO5
+
+group 2
+AVAnimations.SWORD_HEAVY_AUTO_1
+AVAnimations.SWORD_HEAVY_AUTO_2
+AVAnimations.SWORD_HEAVY_AUTO_3
+
+group 3
+AnimationsX.TACHI_DASH
+ExtraAnimations.TACHI_AIR_SLASH
+
+group 4 // this group should follow order and has atleast 2 animations like group 1
+AnimationsX.RUSHING_TEMPO1
+AnimationsX.RUSHING_TEMPO2
+AnimationsX.RUSHING_TEMPO3
+
+group 5
+AVAnimations.KICK_1
+AVAnimations.KICK_2
+AVAnimations.KICK_3
+AVAnimations.KICK_4
+AVAnimations.KICK_C
+AVAnimations.KICK_RUSH
+AVAnimations.KICK_H
+
+group 6
+Animations.BIPED_ROLL_BACKWARD
+Animations.BIPED_ROLL_FORWARD
+
+=== X_LONGSWORD ===
+help me mix into a combo chain like this
+
+all of element should has
+.custom(CombatCommon::canPerformNormalAttackLogic)
+.withinDistance(0.0D, 3.0D)
+
+each combo should be 5 to 10 element has at least 1 to 3 animation from group 1, but it should follow the order in the group 1 from to bottom, 1 animation from group 2, 1 from group 3, 1 from group 4, 1 from group 5 follow the tab rule from the code I sent, no need to create new function or clean code, no comment, for .withinDistance(0.0D, 3.0D) begin of the chain can be 0 3 next can be 0 3 but next should be increased to 0 4, 0 4 and next should be 0 5
+The combo chain should be like example first animation from group 1 -> any from group 2 or 3 or 4 or 5 -> second animation from group 1 or any from group 2 or 3 or 4 or 5 -> third animation from group 1 or any from group 2 or 3 or 4 or 5
+help me create 15 different moves, and please generate into one code block to let me copy everything in a button
+
+
+=== LONGSWORD ===
+help me mix there movement
+group 1
+AnimationsX.LONGSWORD_AUTO1 -> AnimationsX.LONGSWORD_AUTO2 -> AnimationsX.LONGSWORD_AUTO3 -> ExtraAnimations.LONGSWORD_AUTO4 -> ExtraAnimations.LONGSWORD_AUTO5
+
+
+group 2
+AVAnimations.SWORD_HEAVY_AUTO_1
+AVAnimations.SWORD_HEAVY_AUTO_2
+AVAnimations.SWORD_HEAVY_AUTO_3
+
+group 3
+AnimationsX.LONGSWORD_DASH
+AnimationsX.LONGSWORD_AIR_SLASH
+ExtraAnimations.LONGSWORD_TWOHAND_DASH
+ExtraAnimations.LONGSWORD_TWOHAND_AIR_SLASH
+AnimationsX.LONGSWORD_LIECHTENAUER_AUTO1 -> AnimationsX.LONGSWORD_LIECHTENAUER_AUTO2 -> AnimationsX.LONGSWORD_LIECHTENAUER_AUTO3 -> ExtraAnimations.LONGSWORD_LIECHTENAUER_AUTO4 -> ExtraAnimations.LONGSWORD_LIECHTENAUER_AUTO5 -> ExtraAnimations.LONGSWORD_LIECHTENAUER_AUTO6
+
+group 4
+AVAnimations.KICK_1
+AVAnimations.KICK_2
+AVAnimations.KICK_3
+AVAnimations.KICK_4
+AVAnimations.KICK_C
+AVAnimations.KICK_RUSH
+AVAnimations.KICK_H
+
+group 5
+Animations.BIPED_ROLL_BACKWARD
+Animations.BIPED_ROLL_FORWARD
+
+help me mix into a combo chain like this
+
+all of element should has
+.custom(CombatCommon::canPerformNormalAttackLogic)
+.withinDistance(0.0D, 3.0D)
+
+each combo should be 5 to 10 element has at least 1 to 3 animation from group 1, but it should follow the order in the group 1 from to bottom, 1 animation from group 2, 1 from group 3, 1 from group 4, 1 from group 5 follow the tab rule from the code I sent, no need to create new function or clean code, no comment, for .withinDistance(0.0D, 3.0D) begin of the chain can be 0 3 next can be 0 3 but next should be increased to 0 4, 0 4 and next should be 0 5
+The combo chain should be like example first animation from group 1 -> any from group 2 or 3 or 4 or 5 -> second animation from group 1 or any from group 2 or 3 or 4 or 5 -> third animation from group 1 or any from group 2 or 3 or 4 or 5
+help me create 15 different moves, and please generate into one code block to let me copy everything in a button
+
+== X_DAGGER ==
+help me mix there movement
+group 1
+AnimationsX.DAGGER_AUTO1
+AnimationsX.DAGGER_AUTO2
+AnimationsX.DAGGER_AUTO3
+ExtraAnimations.DAGGER_AUTO4
+ExtraAnimations.DAGGER_AUTO5
+
+group 2
+AVAnimations.SWORD_HEAVY_AUTO_1
+AVAnimations.SWORD_HEAVY_AUTO_2
+AVAnimations.SWORD_HEAVY_AUTO_3
+
+group 3
+AnimationsX.DAGGER_DASH
+AnimationsX.DAGGER_AIR_SLASH
+AnimationsX.EVISCERATE_FIRST -> then next must be AnimationsX.EVISCERATE_SECOND // just count this chain as one animation and go on adding another 4
+
+group 4
+AVAnimations.KICK_1
+AVAnimations.KICK_2
+AVAnimations.KICK_3
+AVAnimations.KICK_4
+AVAnimations.KICK_C
+AVAnimations.KICK_RUSH
+AVAnimations.KICK_H
+
+group 5
+Animations.BIPED_ROLL_BACKWARD
+Animations.BIPED_ROLL_FORWARD
+
+help me mix into a combo chain like this
+
+all of element should has
+.custom(CombatCommon::canPerformNormalAttackLogic)
+.withinDistance(0.0D, 3.0D)
+
+each combo should be 5 to 10 element has at least 1 to 3 animation from group 1, but it should follow the order in the group 1 from to bottom, 1 animation from group 2, 1 from group 3, 1 from group 4, 1 from group 5 follow the tab rule from the code I sent, no need to create new function or clean code, no comment, for .withinDistance(0.0D, 3.0D) begin of the chain can be 0 3 next can be 0 3 but next should be increased to 0 4, 0 4 and next should be 0 5
+The combo chain should be like example first animation from group 1 -> any from group 2 or 3 or 4 or 5 -> second animation from group 1 or any from group 2 or 3 or 4 or 5 -> third animation from group 1 or any from group 2 or 3 or 4 or 5
+help me create 15 different moves, and please generate into one code block to let me copy everything in a button
+
+== DUAL DAGGER ==
+help me mix there movement
+group 1
+AnimationsX.DAGGER_DUAL_AUTO1
+AnimationsX.DAGGER_DUAL_AUTO2
+AnimationsX.DAGGER_DUAL_AUTO3
+AnimationsX.DAGGER_DUAL_AUTO4
+
+group 2
+Animations.LONGSWORD_AUTO2
+AVAnimations.DUAL_DANCING_EDGE
+AVAnimations.DUAL_SWORD_DANCING_EDGE
+
+group 3
+AnimationsX.DAGGER_DUAL_DASH
+AnimationsX.DAGGER_AIR_SLASH
+AnimationsX.BLADE_RUSH_COMBO1 -> then next must be AnimationsX.BLADE_RUSH_COMBO2 -> then next must be AnimationsX.BLADE_RUSH_COMBO3 // just count this chain as one animation and go on adding another 4
+
+group 4
+AVAnimations.KICK_1
+AVAnimations.KICK_2
+AVAnimations.KICK_3
+AVAnimations.KICK_4
+AVAnimations.KICK_C
+AVAnimations.KICK_RUSH
+AVAnimations.KICK_H
+
+group 5
+Animations.BIPED_ROLL_BACKWARD
+Animations.BIPED_ROLL_FORWARD
+
+help me mix into a combo chain like this
+
+all of element should has
+.custom(CombatCommon::canPerformNormalAttackLogic)
+.withinDistance(0.0D, 3.0D)
+
+each combo should be 5 to 10 element has at least 1 to 3 animation from group 1, but it should follow the order in the group 1 from to bottom, 1 animation from group 2, 1 from group 3, 1 from group 4, 1 from group 5 follow the tab rule from the code I sent, no need to create new function or clean code, no comment, for .withinDistance(0.0D, 3.0D) begin of the chain can be 0 3 next can be 0 3 but next should be increased to 0 4, 0 4 and next should be 0 5
+The combo chain should be like example first animation from group 1 -> any from group 2 or 3 or 4 or 5 -> second animation from group 1 or any from group 2 or 3 or 4 or 5 -> third animation from group 1 or any from group 2 or 3 or 4 or 5
+help me create 15 different moves, and please generate into one code block to let me copy everything in a button
+
+
+== FIST ==
+help me mix there movement
+group 1
+AnimationsX.FIST_AUTO1 -> AnimationsX.FIST_AUTO2 -> AnimationsX.FIST_AUTO3 -> ExtraAnimations.FIST_AUTO4 -> ExtraAnimations.FIST_AUTO5
+
+group 2
+AVAnimations.FIST_LEFT
+AVAnimations.FIST_UP
+AVAnimations.FIST_DASH
+AVAnimations.WHIRLWIND_KICK_LEFT
+AVAnimations.WHIRLWIND_KICK
+
+group 3
+AnimationsX.FIST_DASH
+AnimationsX.FIST_AIR_SLASH
+AnimationsX.RELENTLESS_COMBO
+
+group 4
+AVAnimations.KICK_1
+AVAnimations.KICK_2
+AVAnimations.KICK_3
+AVAnimations.KICK_4
+AVAnimations.KICK_C
+AVAnimations.KICK_RUSH
+AVAnimations.KICK_COMBO
+
+group 5
+Animations.BIPED_ROLL_BACKWARD
+Animations.BIPED_ROLL_FORWARD
+
+help me mix into a combo chain like this
+
+all of element should has
+.custom(CombatCommon::canPerformNormalAttackLogic)
+.custom(CombatCommon::canAttackWhileNotHealing)
+.withinDistance(0.0D, 3.0D)
+
+each combo should be 5 to 10 element has at least 1 to 3 animation from group 1, but it should follow the order in the group 1 from to bottom, 1 animation from group 2, 1 from group 3, 1 from group 4, 1 from group 5 follow the tab rule from the code I sent, no need to create new function or clean code, no comment, for .withinDistance(0.0D, 3.0D) begin of the chain can be 0 3 next can be 0 3 but next should be increased to 0 4, 0 4 and next should be 0 5
+The combo chain should be like example first animation from group 1 -> any from group 2 or 3 or 4 or 5 -> second animation from group 1 or any from group 2 or 3 or 4 or 5 -> third animation from group 1 or any from group 2 or 3 or 4 or 5
+help me create 15 different moves, and please generate into one code block to let me copy everything in a button
+
+

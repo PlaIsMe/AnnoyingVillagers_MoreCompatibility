@@ -5,9 +5,10 @@
   "refmap": "annoyingvillagers_moredual.mixins.refmap.json",
   "mixins": [
     "EquipmentDataLoaderMixin",
-    "CEHumanoidPatchMixin"
+    "CEHumanoidPatchMixin",
+    "DualAxeMixin",
+    "DualGreatswordMixin"
   ],
-  "client": [
-  ],
+  "client": [],
   "minVersion": "0.8"
 }
