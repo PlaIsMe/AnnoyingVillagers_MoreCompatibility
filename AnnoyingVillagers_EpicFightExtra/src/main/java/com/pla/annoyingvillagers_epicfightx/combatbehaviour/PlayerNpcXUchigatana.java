@@ -4,6 +4,7 @@ import com.asanginxst.epicfightx.gameassets.animations.AnimationsX;
 import com.asanginxst.epicfightx.gameassets.animations.ExtraAnimations;
 import com.pla.annoyingvillagers.combatbehaviour.CombatCommon;
 import com.pla.annoyingvillagers.gameasset.AVAnimations;
+import com.pla.efkick.gameasset.EFKickAnimations;
 import net.shelmarow.combat_evolution.ai.CECombatBehaviors;
 import net.shelmarow.combat_evolution.ai.CECombatBehaviors.Behavior;
 import net.shelmarow.combat_evolution.ai.CECombatBehaviors.BehaviorRoot;
@@ -153,7 +154,7 @@ public class PlayerNpcXUchigatana {
                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
                                                                                                                             .withinDistance(0.0D, 5.0D)
-                                                                                                                            .animationBehavior(AVAnimations.KICK_2, 0.0F)
+                                                                                                                            .animationBehavior(EFKickAnimations.KICK_2, 0.0F)
                                                                                                                             .addNextBehavior(
                                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
@@ -190,7 +191,7 @@ public class PlayerNpcXUchigatana {
                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
                                                                                                                             .withinDistance(0.0D, 5.0D)
-                                                                                                                            .animationBehavior(AVAnimations.KICK_C, 0.0F)
+                                                                                                                            .animationBehavior(EFKickAnimations.KICK_C, 0.0F)
                                                                                                                             .addNextBehavior(
                                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
@@ -212,7 +213,7 @@ public class PlayerNpcXUchigatana {
                                                                     CECombatBehaviors.Behavior.builder()
                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
                                                                             .withinDistance(0.0D, 3.0D)
-                                                                            .animationBehavior(AVAnimations.KICK_1, 0.0F)
+                                                                            .animationBehavior(EFKickAnimations.KICK_1, 0.0F)
                                                                             .addNextBehavior(
                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
@@ -269,7 +270,7 @@ public class PlayerNpcXUchigatana {
                                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
                                                                                                                                             .withinDistance(0.0D, 5.0D)
-                                                                                                                                            .animationBehavior(AVAnimations.KICK_3, 0.0F)
+                                                                                                                                            .animationBehavior(EFKickAnimations.KICK_3, 0.0F)
                                                                                                                                             .addNextBehavior(
                                                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
@@ -307,7 +308,7 @@ public class PlayerNpcXUchigatana {
                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
                                                                                                                             .withinDistance(0.0D, 5.0D)
-                                                                                                                            .animationBehavior(AVAnimations.KICK_RUSH, 0.0F)
+                                                                                                                            .animationBehavior(EFKickAnimations.KICK_RUSH, 0.0F)
                                                                                                                             .addNextBehavior(
                                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
@@ -351,7 +352,7 @@ public class PlayerNpcXUchigatana {
                                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
                                                                                                                                             .withinDistance(0.0D, 5.0D)
-                                                                                                                                            .animationBehavior(AVAnimations.KICK_4, 0.0F)
+                                                                                                                                            .animationBehavior(EFKickAnimations.KICK_4, 0.0F)
                                                                                                                             )
                                                                                                             )
                                                                                             )
@@ -388,7 +389,7 @@ public class PlayerNpcXUchigatana {
                                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
                                                                                                                                             .withinDistance(0.0D, 5.0D)
-                                                                                                                                            .animationBehavior(AVAnimations.KICK_2, 0.0F)
+                                                                                                                                            .animationBehavior(EFKickAnimations.KICK_2, 0.0F)
                                                                                                                                             .addNextBehavior(
                                                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
@@ -426,7 +427,7 @@ public class PlayerNpcXUchigatana {
                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
                                                                                                                             .withinDistance(0.0D, 5.0D)
-                                                                                                                            .animationBehavior(AVAnimations.KICK_H, 0.0F)
+                                                                                                                            .animationBehavior(EFKickAnimations.KICK_H, 0.0F)
                                                                                                                             .addNextBehavior(
                                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
@@ -470,7 +471,7 @@ public class PlayerNpcXUchigatana {
                                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
                                                                                                                                             .withinDistance(0.0D, 5.0D)
-                                                                                                                                            .animationBehavior(AVAnimations.KICK_1, 0.0F)
+                                                                                                                                            .animationBehavior(EFKickAnimations.KICK_1, 0.0F)
                                                                                                                                             .addNextBehavior(
                                                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
@@ -518,7 +519,7 @@ public class PlayerNpcXUchigatana {
                                                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
                                                                                                                                                             .withinDistance(0.0D, 5.0D)
-                                                                                                                                                            .animationBehavior(AVAnimations.KICK_2, 0.0F)
+                                                                                                                                                            .animationBehavior(EFKickAnimations.KICK_2, 0.0F)
                                                                                                                                                             .addNextBehavior(
                                                                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
@@ -562,7 +563,7 @@ public class PlayerNpcXUchigatana {
                                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
                                                                                                                                             .withinDistance(0.0D, 5.0D)
-                                                                                                                                            .animationBehavior(AVAnimations.KICK_C, 0.0F)
+                                                                                                                                            .animationBehavior(EFKickAnimations.KICK_C, 0.0F)
                                                                                                                                             .addNextBehavior(
                                                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
@@ -604,7 +605,7 @@ public class PlayerNpcXUchigatana {
                                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
                                                                                                                                             .withinDistance(0.0D, 5.0D)
-                                                                                                                                            .animationBehavior(AVAnimations.KICK_4, 0.0F)
+                                                                                                                                            .animationBehavior(EFKickAnimations.KICK_4, 0.0F)
                                                                                                                                             .addNextBehavior(
                                                                                                                                                     CECombatBehaviors.Behavior.builder()
                                                                                                                                                             .custom(CombatCommon::canPerformNormalAttackLogic)
@@ -708,43 +709,43 @@ public class PlayerNpcXUchigatana {
                                     Behavior.builder()
                                             .custom(CombatCommon::canPerformNormalAttackLogic)
                                             .withinDistance(0.0D, 3.0D)
-                                            .animationBehavior(AVAnimations.KICK_1, 0.0F)
+                                            .animationBehavior(EFKickAnimations.KICK_1, 0.0F)
                             )
                             .addFirstBehavior(
                                     Behavior.builder()
                                             .custom(CombatCommon::canPerformNormalAttackLogic)
                                             .withinDistance(0.0D, 3.0D)
-                                            .animationBehavior(AVAnimations.KICK_2, 0.0F)
+                                            .animationBehavior(EFKickAnimations.KICK_2, 0.0F)
                             )
                             .addFirstBehavior(
                                     Behavior.builder()
                                             .custom(CombatCommon::canPerformNormalAttackLogic)
                                             .withinDistance(0.0D, 3.0D)
-                                            .animationBehavior(AVAnimations.KICK_3, 0.0F)
+                                            .animationBehavior(EFKickAnimations.KICK_3, 0.0F)
                             )
                             .addFirstBehavior(
                                     Behavior.builder()
                                             .custom(CombatCommon::canPerformNormalAttackLogic)
                                             .withinDistance(0.0D, 3.0D)
-                                            .animationBehavior(AVAnimations.KICK_4, 0.0F)
+                                            .animationBehavior(EFKickAnimations.KICK_4, 0.0F)
                             )
                             .addFirstBehavior(
                                     Behavior.builder()
                                             .custom(CombatCommon::canPerformNormalAttackLogic)
                                             .withinDistance(0.0D, 3.0D)
-                                            .animationBehavior(AVAnimations.KICK_C, 0.0F)
+                                            .animationBehavior(EFKickAnimations.KICK_C, 0.0F)
                             )
                             .addFirstBehavior(
                                     Behavior.builder()
                                             .custom(CombatCommon::canPerformNormalAttackLogic)
                                             .withinDistance(0.0D, 3.0D)
-                                            .animationBehavior(AVAnimations.KICK_RUSH, 0.0F)
+                                            .animationBehavior(EFKickAnimations.KICK_RUSH, 0.0F)
                             )
                             .addFirstBehavior(
                                     Behavior.builder()
                                             .custom(CombatCommon::canPerformNormalAttackLogic)
                                             .withinDistance(0.0D, 3.0D)
-                                            .animationBehavior(AVAnimations.KICK_H, 0.0F)
+                                            .animationBehavior(EFKickAnimations.KICK_H, 0.0F)
                             )
             )
             .newBehaviorRoot(

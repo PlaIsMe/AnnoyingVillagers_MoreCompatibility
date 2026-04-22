@@ -15,13 +15,13 @@ AnimationsX.SWORD_DUAL_AIR_SLASH
 AnimationsX.DANCING_EDGE
 
 group 4
-AVAnimations.KICK_1
-AVAnimations.KICK_2
-AVAnimations.KICK_3
-AVAnimations.KICK_4
-AVAnimations.KICK_C
-AVAnimations.KICK_RUSH
-AVAnimations.KICK_H
+EFKickAnimations.KICK_1
+EFKickAnimations.KICK_2
+EFKickAnimations.KICK_3
+EFKickAnimations.KICK_4
+EFKickAnimations.KICK_C
+EFKickAnimations.KICK_RUSH
+EFKickAnimations.KICK_H
 
 group 5
 Animations.BIPED_ROLL_BACKWARD
@@ -51,13 +51,13 @@ AnimationsX.SPEAR_TWOHAND_AIR_SLASH
 AnimationsX.GRASPING_SPIRAL_FIRST -> AnimationsX.GRASPING_SPIRAL_SECOND // counted as one
 
 group 4
-AVAnimations.KICK_1
-AVAnimations.KICK_2
-AVAnimations.KICK_3
-AVAnimations.KICK_4
-AVAnimations.KICK_C
-AVAnimations.KICK_RUSH
-AVAnimations.KICK_H
+EFKickAnimations.KICK_1
+EFKickAnimations.KICK_2
+EFKickAnimations.KICK_3
+EFKickAnimations.KICK_4
+EFKickAnimations.KICK_C
+EFKickAnimations.KICK_RUSH
+EFKickAnimations.KICK_H
 
 group 5
 Animations.BIPED_ROLL_BACKWARD
@@ -93,13 +93,13 @@ AnimationsX.UCHIGATANA_AIR_SLASH
 AnimationsX.UCHIGATANA_SHEATHING_DASH
 
 group 4
-AVAnimations.KICK_1
-AVAnimations.KICK_2
-AVAnimations.KICK_3
-AVAnimations.KICK_4
-AVAnimations.KICK_C
-AVAnimations.KICK_RUSH
-AVAnimations.KICK_H
+EFKickAnimations.KICK_1
+EFKickAnimations.KICK_2
+EFKickAnimations.KICK_3
+EFKickAnimations.KICK_4
+EFKickAnimations.KICK_C
+EFKickAnimations.KICK_RUSH
+EFKickAnimations.KICK_H
 
 group 6
 Animations.BIPED_ROLL_BACKWARD
@@ -136,13 +136,13 @@ AnimationsX.RUSHING_TEMPO2
 AnimationsX.RUSHING_TEMPO3
 
 group 5
-AVAnimations.KICK_1
-AVAnimations.KICK_2
-AVAnimations.KICK_3
-AVAnimations.KICK_4
-AVAnimations.KICK_C
-AVAnimations.KICK_RUSH
-AVAnimations.KICK_H
+EFKickAnimations.KICK_1
+EFKickAnimations.KICK_2
+EFKickAnimations.KICK_3
+EFKickAnimations.KICK_4
+EFKickAnimations.KICK_C
+EFKickAnimations.KICK_RUSH
+EFKickAnimations.KICK_H
 
 group 6
 Animations.BIPED_ROLL_BACKWARD
@@ -179,13 +179,13 @@ ExtraAnimations.LONGSWORD_TWOHAND_AIR_SLASH
 AnimationsX.LONGSWORD_LIECHTENAUER_AUTO1 -> AnimationsX.LONGSWORD_LIECHTENAUER_AUTO2 -> AnimationsX.LONGSWORD_LIECHTENAUER_AUTO3 -> ExtraAnimations.LONGSWORD_LIECHTENAUER_AUTO4 -> ExtraAnimations.LONGSWORD_LIECHTENAUER_AUTO5 -> ExtraAnimations.LONGSWORD_LIECHTENAUER_AUTO6
 
 group 4
-AVAnimations.KICK_1
-AVAnimations.KICK_2
-AVAnimations.KICK_3
-AVAnimations.KICK_4
-AVAnimations.KICK_C
-AVAnimations.KICK_RUSH
-AVAnimations.KICK_H
+EFKickAnimations.KICK_1
+EFKickAnimations.KICK_2
+EFKickAnimations.KICK_3
+EFKickAnimations.KICK_4
+EFKickAnimations.KICK_C
+EFKickAnimations.KICK_RUSH
+EFKickAnimations.KICK_H
 
 group 5
 Animations.BIPED_ROLL_BACKWARD
@@ -221,13 +221,13 @@ AnimationsX.DAGGER_AIR_SLASH
 AnimationsX.EVISCERATE_FIRST -> then next must be AnimationsX.EVISCERATE_SECOND // just count this chain as one animation and go on adding another 4
 
 group 4
-AVAnimations.KICK_1
-AVAnimations.KICK_2
-AVAnimations.KICK_3
-AVAnimations.KICK_4
-AVAnimations.KICK_C
-AVAnimations.KICK_RUSH
-AVAnimations.KICK_H
+EFKickAnimations.KICK_1
+EFKickAnimations.KICK_2
+EFKickAnimations.KICK_3
+EFKickAnimations.KICK_4
+EFKickAnimations.KICK_C
+EFKickAnimations.KICK_RUSH
+EFKickAnimations.KICK_H
 
 group 5
 Animations.BIPED_ROLL_BACKWARD
@@ -262,13 +262,13 @@ AnimationsX.DAGGER_AIR_SLASH
 AnimationsX.BLADE_RUSH_COMBO1 -> then next must be AnimationsX.BLADE_RUSH_COMBO2 -> then next must be AnimationsX.BLADE_RUSH_COMBO3 // just count this chain as one animation and go on adding another 4
 
 group 4
-AVAnimations.KICK_1
-AVAnimations.KICK_2
-AVAnimations.KICK_3
-AVAnimations.KICK_4
-AVAnimations.KICK_C
-AVAnimations.KICK_RUSH
-AVAnimations.KICK_H
+EFKickAnimations.KICK_1
+EFKickAnimations.KICK_2
+EFKickAnimations.KICK_3
+EFKickAnimations.KICK_4
+EFKickAnimations.KICK_C
+EFKickAnimations.KICK_RUSH
+EFKickAnimations.KICK_H
 
 group 5
 Animations.BIPED_ROLL_BACKWARD
@@ -303,13 +303,13 @@ AnimationsX.FIST_AIR_SLASH
 AnimationsX.RELENTLESS_COMBO
 
 group 4
-AVAnimations.KICK_1
-AVAnimations.KICK_2
-AVAnimations.KICK_3
-AVAnimations.KICK_4
-AVAnimations.KICK_C
-AVAnimations.KICK_RUSH
-AVAnimations.KICK_COMBO
+EFKickAnimations.KICK_1
+EFKickAnimations.KICK_2
+EFKickAnimations.KICK_3
+EFKickAnimations.KICK_4
+EFKickAnimations.KICK_C
+EFKickAnimations.KICK_RUSH
+EFKickAnimations.KICK_COMBO
 
 group 5
 Animations.BIPED_ROLL_BACKWARD

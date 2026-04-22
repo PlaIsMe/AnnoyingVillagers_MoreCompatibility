@@ -81,7 +81,7 @@ dependencies {
     implementation fg.deobf("curse.maven:weapons-of-miracles-epicfight-918614:7517612")
 
     implementation fg.deobf("curse.maven:epicfight-clash-blade-1408812:7662809")
-    implementation fg.deobf("curse.maven:weapons-of-miracles-epicfight-918614:7517612")
+    implementation fg.deobf("curse.maven:epicfight-kick-skills-1521559:7966307")
     implementation fg.deobf("curse.maven:player-mobs-430513:5780869")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
