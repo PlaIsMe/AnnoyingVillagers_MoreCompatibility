@@ -5,11 +5,8 @@
   "refmap": "annoyingvillagers_resurrection.mixins.refmap.json",
   "mixins": [
     "EquipmentDataLoaderMixin",
-    "ExecuteMixin",
     "SpecialAttackOnKeyPressedEventMixin",
-    "CEHumanoidPatchMixin",
-    "CorruptAnimationsMixin",
-    "YamatoSkillMixin"
+    "CEHumanoidPatchMixin"
   ],
   "client": [
   ],
