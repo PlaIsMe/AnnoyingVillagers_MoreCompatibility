@@ -1,4 +1,4 @@
-# AnnoyingVillagers_MoreCompatibility License (AVMC) v1.0
+# AnnoyingVillagers-PlayerNpcWeaponsExpansion License v1.0
 
 Copyright (c) 2026 pla_is_me
 
