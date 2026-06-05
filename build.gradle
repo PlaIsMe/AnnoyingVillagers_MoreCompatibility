@@ -84,6 +84,10 @@ dependencies {
     implementation fg.deobf("curse.maven:weapons-of-miracles-epicfight-918614:7517612")
     implementation fg.deobf("curse.maven:player-mobs-430513:5780869")
 
+    implementation fg.deobf("curse.maven:spartan-weaponry-278141:6842571")
+    implementation fg.deobf("curse.maven:mcdw-407311:5280243")
+    implementation fg.deobf("curse.maven:epic-knights-armor-and-weapons-509041:7756534")
+
     compileOnly "io.github.llamalad7:mixinextras-common:0.5.0"
     annotationProcessor "io.github.llamalad7:mixinextras-common:0.5.0"
     runtimeOnly "io.github.llamalad7:mixinextras-forge:0.5.0"

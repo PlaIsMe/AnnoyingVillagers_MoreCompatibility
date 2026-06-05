@@ -1,13 +1,15 @@
 {
   "required": true,
   "package": "com.pla.player_npc_weapons_expansion.mixins",
-  "plugin": "com.pla.player_npc_weapons_expansion.mixins.OptionalDependencyMixinPlugin",
+  "plugin": "com.pla.player_npc_weapons_expansion.mixins.CompatMixinPlugin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "player_npc_weapons_expansion.mixins.refmap.json",
   "mixins": [
     "cdmoveset.EquipmentDataLoaderMixin",
     "cdmoveset.SpecialAttackOnKeyPressedEventMixin",
-    "cdmoveset.CEHumanoidPatchMixin"
+    "cdmoveset.CEHumanoidPatchMixin",
+    "refm.SpecialAttackOnKeyPressedEventMixin",
+    "refm.CEHumanoidPatchMixin"
   ],
   "client": [
   ],

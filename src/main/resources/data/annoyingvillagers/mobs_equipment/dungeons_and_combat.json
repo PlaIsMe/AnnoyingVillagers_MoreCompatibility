@@ -1,0 +1,68 @@
+﻿{
+  "MAINHAND": [
+  ],
+  "OFFHAND": [
+  ],
+  "FEET": [
+    "blacksmith_boots",
+    "bounty_hunter_boots",
+    "bronze_boots",
+    "copper_boots",
+    "deserter_armor_boots",
+    "forgotten_knight_boots",
+    "oni_slayer_boots",
+    "royal_steel_boots",
+    "rogue_boots",
+    "sandstone_boots",
+    "steel_boots",
+    "titan_boots",
+    "titanium_boots"
+  ],
+  "LEGS": [
+    "blacksmith_leggings",
+    "bounty_hunter_leggings",
+    "bronze_leggings",
+    "copper_leggings",
+    "deserter_armor_leggings",
+    "forgotten_knight_leggings",
+    "oni_slayer_leggings",
+    "royal_steel_leggings",
+    "rogue_leggings",
+    "sandstone_leggings",
+    "steel_leggings",
+    "titan_leggings",
+    "titanium_leggings"
+  ],
+  "CHEST": [
+    "blacksmith_chestplate",
+    "bounty_hunter_chestplate",
+    "bronze_chestplate",
+    "copper_chestplate",
+    "deserter_armor_chestplate",
+    "forgotten_knight_chestplate",
+    "oni_slayer_chestplate",
+    "royal_steel_chestplate",
+    "rogue_chestplate",
+    "sandstone_chestplate",
+    "steel_chestplate",
+    "titan_chestplate",
+    "titanium_chestplate"
+  ],
+  "HEAD": [
+    "blacksmith_helmet",
+    "bounty_hunter_helmet",
+    "bronze_helmet",
+    "copper_helmet",
+    "deserter_armor_helmet",
+    "forgotten_knight_helmet",
+    "hood_of_shame_helmet",
+    "oni_slayer_helmet",
+    "prisoner_helmet",
+    "royal_steel_helmet",
+    "rogue_helmet",
+    "sandstone_helmet",
+    "steel_helmet",
+    "titan_helmet",
+    "titanium_helmet"
+  ]
+}

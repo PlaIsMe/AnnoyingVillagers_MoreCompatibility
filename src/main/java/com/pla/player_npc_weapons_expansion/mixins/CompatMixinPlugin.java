@@ -1,19 +1,24 @@
 package com.pla.player_npc_weapons_expansion.mixins;
 
-import net.minecraftforge.fml.ModList;
+import java.util.List;
+import java.util.Set;
+import net.minecraftforge.fml.loading.FMLLoader;
+import net.minecraftforge.fml.loading.LoadingModList;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
-import java.util.List;
-import java.util.Set;
+public final class CompatMixinPlugin implements IMixinConfigPlugin {
+    private static final String CD_MOVESET_COMPAT_PREFIX = "com.pla.player_npc_weapons_expansion.mixins.cdmoveset.";
+    private static final String REFM_COMPAT_PREFIX = "com.pla.player_npc_weapons_expansion.mixins.refm.";
 
-public class OptionalDependencyMixinPlugin implements IMixinConfigPlugin {
-    private String mixinPackage;
+    private static boolean isModLoadedEarly(String modId) {
+        LoadingModList list = FMLLoader.getLoadingModList();
+        return list != null && list.getModFileById(modId) != null;
+    }
 
     @Override
     public void onLoad(String mixinPackage) {
-        this.mixinPackage = mixinPackage;
     }
 
     @Override
@@ -23,8 +28,13 @@ public class OptionalDependencyMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        String requiredModId = getRequiredModId(mixinClassName);
-        return requiredModId.isEmpty() || ModList.get().isLoaded(requiredModId);
+        if (mixinClassName.startsWith(CD_MOVESET_COMPAT_PREFIX)) {
+            return isModLoadedEarly("cdmoveset");
+        }
+        if (mixinClassName.startsWith(REFM_COMPAT_PREFIX)) {
+            return isModLoadedEarly("refm");
+        }
+        return true;
     }
 
     @Override
@@ -42,15 +52,5 @@ public class OptionalDependencyMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-    }
-
-    private String getRequiredModId(String mixinClassName) {
-        if (mixinPackage == null || !mixinClassName.startsWith(mixinPackage + ".")) {
-            return "";
-        }
-
-        String relativeMixinName = mixinClassName.substring(mixinPackage.length() + 1);
-        int separator = relativeMixinName.indexOf('.');
-        return separator > 0 ? relativeMixinName.substring(0, separator) : "";
     }
 }

@@ -39,3 +39,9 @@ description='''${mod_description}'''
     versionRange="[0,)"
     ordering="AFTER"
     side="BOTH"
+[[dependencies.player_npc_weapons_expansion]]
+    modId="refm"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"
