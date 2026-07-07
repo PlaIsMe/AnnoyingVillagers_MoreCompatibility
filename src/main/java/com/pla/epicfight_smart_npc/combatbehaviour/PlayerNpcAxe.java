@@ -13,7 +13,7 @@ public class PlayerNpcAxe {
                     Animations.AXE_AUTO1,
                     Animations.AXE_AUTO2
             ),
-            (ModList.get().isLoaded("annoyingvillagers") ? swordHeavyAnimations() : CombatCommon.animations()),
+            (ModList.get().isLoaded("annoyingvillagers") ? axeHeavyAnimations() : CombatCommon.animations()),
             CombatCommon.animations(
                     Animations.AXE_DASH,
                     Animations.AXE_AIRSLASH,

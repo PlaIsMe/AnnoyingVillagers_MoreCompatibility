@@ -8,7 +8,7 @@ import net.minecraftforge.fml.ModList;
 import net.shelmarow.combat_evolution.ai.CECombatBehaviors.Builder;
 import yesman.epicfight.world.capabilities.entitypatch.MobPatch;
 
-import static com.pla.epicfight_smart_npc.compat.annoyingvillagers.AnnoyingVillagers.swordHeavyAnimations;
+import static com.pla.epicfight_smart_npc.compat.annoyingvillagers.AnnoyingVillagers.axeHeavyAnimations;
 
 public class PlayerNpcXAxe {
     public static final Builder<MobPatch<?>> X_AXE = PlayerNpcCombatBehaviorBuilder.weapon(
@@ -19,7 +19,7 @@ public class PlayerNpcXAxe {
                     ExtraAnimations.AXE_AUTO4,
                     ExtraAnimations.AXE_AUTO5
             ),
-            (ModList.get().isLoaded("annoyingvillagers") ? swordHeavyAnimations() : CombatCommon.animations()),
+            (ModList.get().isLoaded("annoyingvillagers") ? axeHeavyAnimations() : CombatCommon.animations()),
             CombatCommon.animations(
                     AnimationsX.AXE_DASH,
                     AnimationsX.AXE_AIRSLASH,

@@ -8,7 +8,7 @@ import net.shelmarow.combat_evolution.ai.CECombatBehaviors;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.world.capabilities.entitypatch.MobPatch;
 
-import static com.pla.epicfight_smart_npc.compat.annoyingvillagers.AnnoyingVillagers.swordHeavyAnimations;
+import static com.pla.epicfight_smart_npc.compat.annoyingvillagers.AnnoyingVillagers.axeHeavyAnimations;
 
 public class PlayerNpcDualAxe {
     public static final CECombatBehaviors.Builder<MobPatch<?>> AXE = PlayerNpcCombatBehaviorBuilder.weapon(
@@ -17,7 +17,7 @@ public class PlayerNpcDualAxe {
                     DualAxesAnimations.AXE_AUTO_2,
                     DualAxesAnimations.AXE_AUTO_3
             ),
-            (ModList.get().isLoaded("annoyingvillagers") ? swordHeavyAnimations() : CombatCommon.animations()),
+            (ModList.get().isLoaded("annoyingvillagers") ? axeHeavyAnimations() : CombatCommon.animations()),
             CombatCommon.animations(
                     Animations.BIPED_MOB_TACHI,
                     Animations.AXE_AIRSLASH,
@@ -31,7 +31,7 @@ public class PlayerNpcDualAxe {
                     DualAxesAnimations.AXE_DUAL_AUTO_2,
                     DualAxesAnimations.AXE_DUAL_AUTO_3
             ),
-            (ModList.get().isLoaded("annoyingvillagers") ? swordHeavyAnimations() : CombatCommon.animations()),
+            (ModList.get().isLoaded("annoyingvillagers") ? axeHeavyAnimations() : CombatCommon.animations()),
             CombatCommon.animations(
                     DualAxesAnimations.AXE_DUAL_DASH,
                     DualAxesAnimations.AXE_DUAL_AIRSLASH,
