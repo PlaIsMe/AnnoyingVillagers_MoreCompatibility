@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
 public final class CompatMixinPlugin implements IMixinConfigPlugin {
+    private static final String ANNOYING_VILLAGERS_COMPAT_PREFIX = "com.pla.epicfight_smart_npc.mixins.annoyingvillagers.";
     private static final String CD_MOVESET_COMPAT_PREFIX = "com.pla.epicfight_smart_npc.mixins.cdmoveset.";
     private static final String REFM_COMPAT_PREFIX = "com.pla.epicfight_smart_npc.mixins.refm.";
 
@@ -28,6 +29,9 @@ public final class CompatMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
+        if (mixinClassName.startsWith(ANNOYING_VILLAGERS_COMPAT_PREFIX)) {
+            return isModLoadedEarly("annoyingvillagers");
+        }
         if (mixinClassName.startsWith(CD_MOVESET_COMPAT_PREFIX)) {
             return isModLoadedEarly("cdmoveset");
         }

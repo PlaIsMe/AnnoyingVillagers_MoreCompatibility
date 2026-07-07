@@ -6,10 +6,9 @@
   "refmap": "epicfight_smart_npc.mixins.refmap.json",
   "mixins": [
     "PlayerNpcEntityMixin",
+    "annoyingvillagers.EquipmentDataLoaderMixin",
     "cdmoveset.EquipmentDataLoaderMixin",
-    "cdmoveset.SpecialAttackOnKeyPressedEventMixin",
     "cdmoveset.CEHumanoidPatchMixin",
-    "refm.SpecialAttackOnKeyPressedEventMixin",
     "refm.CEHumanoidPatchMixin"
   ],
   "client": [

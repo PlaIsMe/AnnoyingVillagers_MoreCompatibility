@@ -1,10 +1,9 @@
 package com.pla.epicfight_smart_npc.mixins.cdmoveset;
 
+import com.pla.smart_npc.clazz.Difficulty;
 import com.pla.smart_npc.util.EquipmentDataLoader;
 import net.corruptdog.cdm.world.CorruptWeaponCategories;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -15,12 +14,9 @@ import yesman.epicfight.world.capabilities.item.WeaponCapability;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 
-@Mixin(value = {EquipmentDataLoader.class}, remap = false)
+@Mixin(value = EquipmentDataLoader.class, remap = false)
 public abstract class EquipmentDataLoaderMixin {
-    private static final Random EPICFIGHT_SMART_NPC$RANDOM = new Random();
-
     private static final List<String> EPICFIGHT_SMART_NPC$S_DAGGER_OFFHAND_POOL = List.of(
             "cdmoveset:s_wooden_dagger",
             "cdmoveset:s_stone_dagger",
@@ -65,53 +61,42 @@ public abstract class EquipmentDataLoaderMixin {
             "cdmoveset:s_diamond_sword"
     );
 
-    @Inject(method = "addMoreDualCap", at = @At("HEAD"), cancellable = true)
-    private static void addCdWeaponDualCap(ItemStack stack, WeaponCapability weaponCapability, CallbackInfoReturnable<Boolean> callbackInfoReturnable) {
-        if (weaponCapability.getWeaponCategory() == CorruptWeaponCategories.S_DAGGER
+    @Inject(method = "canUseCompatDualWeapon", at = @At("HEAD"), cancellable = true)
+    private static void epicfightSmartNpc$canUseCdDualWeapon(ItemStack stack, CallbackInfoReturnable<Boolean> callbackInfo) {
+        CapabilityItem capabilityItem = EpicFightCapabilities.getItemStackCapability(stack);
+
+        if (capabilityItem instanceof WeaponCapability weaponCapability
+                && (weaponCapability.getWeaponCategory() == CorruptWeaponCategories.S_DAGGER
                 || weaponCapability.getWeaponCategory() == CorruptWeaponCategories.S_GREATSWORD
-                || weaponCapability.getWeaponCategory() == CorruptWeaponCategories.S_SWORD) callbackInfoReturnable.setReturnValue(true);
+                || weaponCapability.getWeaponCategory() == CorruptWeaponCategories.S_SWORD)) {
+            callbackInfo.setReturnValue(true);
+        }
     }
 
-    @Inject(method = "addMoreShieldCap", at = @At("HEAD"), cancellable = true)
-    private static void addCdWeaponShield(WeaponCapability weaponCapability, CallbackInfoReturnable<Boolean> callbackInfoReturnable) {
-        if (weaponCapability.getWeaponCategory() == CorruptWeaponCategories.S_SWORD
+    @Inject(method = "canUseCompatShield", at = @At("HEAD"), cancellable = true)
+    private static void epicfightSmartNpc$canUseCdShield(ItemStack stack, CallbackInfoReturnable<Boolean> callbackInfo) {
+        CapabilityItem capabilityItem = EpicFightCapabilities.getItemStackCapability(stack);
+
+        if (capabilityItem instanceof WeaponCapability weaponCapability
+                && (weaponCapability.getWeaponCategory() == CorruptWeaponCategories.S_SWORD
                 || weaponCapability.getWeaponCategory() == CorruptWeaponCategories.S_LONGSWORD
-                || weaponCapability.getWeaponCategory() == CorruptWeaponCategories.S_SPEAR) callbackInfoReturnable.setReturnValue(true);
+                || weaponCapability.getWeaponCategory() == CorruptWeaponCategories.S_SPEAR)) {
+            callbackInfo.setReturnValue(true);
+        }
     }
 
-    @Inject(method = "getLegacyRandomOffhandWeapon", at = @At("HEAD"), cancellable = true)
-    private static void getCdRandomOffhandWeapon(ItemStack mainHandStack, CallbackInfoReturnable<Optional<String>> callbackInfoReturnable) {
+    @Inject(method = "getCompatDualWeaponOffhandItem", at = @At("HEAD"), cancellable = true)
+    private static void epicfightSmartNpc$getCdDualWeaponOffhandItem(String mainHandItemId, ItemStack mainHandStack, Difficulty difficulty, CallbackInfoReturnable<Optional<String>> callbackInfo) {
         CapabilityItem capabilityItem = EpicFightCapabilities.getItemStackCapability(mainHandStack);
 
         if (capabilityItem instanceof WeaponCapability weaponCapability) {
             if (weaponCapability.getWeaponCategory() == CorruptWeaponCategories.S_DAGGER) {
-                callbackInfoReturnable.setReturnValue(getRandomExistingItem(EPICFIGHT_SMART_NPC$S_DAGGER_OFFHAND_POOL));
+                callbackInfo.setReturnValue(EquipmentDataLoader.getRandomExistingItem(EPICFIGHT_SMART_NPC$S_DAGGER_OFFHAND_POOL));
             } else if (weaponCapability.getWeaponCategory() == CorruptWeaponCategories.S_GREATSWORD) {
-                callbackInfoReturnable.setReturnValue(getRandomExistingItem(EPICFIGHT_SMART_NPC$S_GREATSWORD_OFFHAND_POOL));
+                callbackInfo.setReturnValue(EquipmentDataLoader.getRandomExistingItem(EPICFIGHT_SMART_NPC$S_GREATSWORD_OFFHAND_POOL));
             } else if (weaponCapability.getWeaponCategory() == CorruptWeaponCategories.S_SWORD) {
-                callbackInfoReturnable.setReturnValue(getRandomExistingItem(EPICFIGHT_SMART_NPC$S_SWORD_OFFHAND_POOL));
+                callbackInfo.setReturnValue(EquipmentDataLoader.getRandomExistingItem(EPICFIGHT_SMART_NPC$S_SWORD_OFFHAND_POOL));
             }
         }
-    }
-
-    private static Optional<String> getRandomExistingItem(List<String> itemIds) {
-        List<String> existingItemIds = itemIds.stream()
-                .filter(EquipmentDataLoaderMixin::itemExists)
-                .toList();
-
-        if (existingItemIds.isEmpty()) {
-            return Optional.empty();
-        }
-
-        return Optional.of(existingItemIds.get(EPICFIGHT_SMART_NPC$RANDOM.nextInt(existingItemIds.size())));
-    }
-
-    private static boolean itemExists(String itemId) {
-        String[] parts = itemId.split(":", 2);
-        if (parts.length != 2) {
-            return false;
-        }
-
-        return ForgeRegistries.ITEMS.getValue(ResourceLocation.fromNamespaceAndPath(parts[0], parts[1])) != null;
     }
 }

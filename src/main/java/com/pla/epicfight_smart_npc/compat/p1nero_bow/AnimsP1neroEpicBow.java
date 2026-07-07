@@ -25,6 +25,7 @@ import com.p1nero.epicfightbow.gameassets.EFBowColliders;
 import com.pla.epicfight_smart_npc.EpicFightSmartNpc;
 import com.pla.epicfight_smart_npc.animations.BowAttackAnimation;
 import com.pla.epicfight_smart_npc.gameasset.SmartNpcAnimations;
+import com.pla.epicfight_smart_npc.util.BowFunction;
 import net.minecraft.world.InteractionHand;
 import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.api.animation.AnimationManager;
@@ -48,8 +49,8 @@ public class AnimsP1neroEpicBow {
                 (accessor) -> (new BowAttackAnimation(0.15F, 0.0F, 0.15F, 1.0833334F, 1.0833334F, InteractionHand.MAIN_HAND, null, Armatures.BIPED.get().rootJoint, accessor, Armatures.BIPED))
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true)
                         .addEvents(
-                                AnimationEvent.InTimeEvent.create(0.5F, (livingEntityPatch, assetAccessor, objects) -> PlayerNpcBowFunction.bowShoot(livingEntityPatch), AnimationEvent.Side.BOTH),
-                                AnimationEvent.InTimeEvent.create(1.0F, (livingEntityPatch, assetAccessor, objects) -> PlayerNpcBowFunction.bowShoot(livingEntityPatch), AnimationEvent.Side.BOTH),
+                                AnimationEvent.InTimeEvent.create(0.5F, (livingEntityPatch, assetAccessor, objects) -> BowFunction.bowShoot(livingEntityPatch), AnimationEvent.Side.BOTH),
+                                AnimationEvent.InTimeEvent.create(1.0F, (livingEntityPatch, assetAccessor, objects) -> BowFunction.bowShoot(livingEntityPatch), AnimationEvent.Side.BOTH),
                                 AnimationEvent.InTimeEvent.create(1.1F, (livingEntityPatch, self, p) -> {
                                     if (!livingEntityPatch.isLogicalClient()) {
                                         livingEntityPatch.playAnimationSynchronized(SmartNpcAnimations.IDLE_BREAK, 0.0F);
@@ -61,8 +62,8 @@ public class AnimsP1neroEpicBow {
                 (accessor) -> (new BowAttackAnimation(0.15F, 0.0F, 0.15F, 1.0833334F, 1.0833334F, InteractionHand.MAIN_HAND, null, Armatures.BIPED.get().rootJoint, accessor, Armatures.BIPED))
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true)
                         .addEvents(
-                                AnimationEvent.InTimeEvent.create(0.5F, (livingEntityPatch, assetAccessor, objects) -> PlayerNpcBowFunction.bowShoot(livingEntityPatch), AnimationEvent.Side.BOTH),
-                                AnimationEvent.InTimeEvent.create(1.0F, (livingEntityPatch, assetAccessor, objects) -> PlayerNpcBowFunction.bowShoot(livingEntityPatch), AnimationEvent.Side.BOTH),
+                                AnimationEvent.InTimeEvent.create(0.5F, (livingEntityPatch, assetAccessor, objects) -> BowFunction.bowShoot(livingEntityPatch), AnimationEvent.Side.BOTH),
+                                AnimationEvent.InTimeEvent.create(1.0F, (livingEntityPatch, assetAccessor, objects) -> BowFunction.bowShoot(livingEntityPatch), AnimationEvent.Side.BOTH),
                                 AnimationEvent.InTimeEvent.create(1.1F, (livingEntityPatch, self, p) -> {
                                     if (!livingEntityPatch.isLogicalClient()) {
                                         livingEntityPatch.playAnimationSynchronized(SmartNpcAnimations.IDLE_BREAK, 0.0F);
@@ -74,9 +75,9 @@ public class AnimsP1neroEpicBow {
                 (accessor) -> (new BowAttackAnimation(0.15F, 0.0F, 0.15F, 1.6666666F, 2.0F, InteractionHand.MAIN_HAND, null, Armatures.BIPED.get().rootJoint, accessor, Armatures.BIPED))
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true)
                         .addEvents(
-                                AnimationEvent.InTimeEvent.create(1.3333334F, (livingEntityPatch, assetAccessor, objects) -> PlayerNpcBowFunction.bowShoot(livingEntityPatch), AnimationEvent.Side.BOTH),
-                                AnimationEvent.InTimeEvent.create(1.5F, (livingEntityPatch, assetAccessor, objects) -> PlayerNpcBowFunction.bowShoot(livingEntityPatch), AnimationEvent.Side.BOTH),
-                                AnimationEvent.InTimeEvent.create(1.6666666F, (livingEntityPatch, assetAccessor, objects) -> PlayerNpcBowFunction.bowShoot(livingEntityPatch), AnimationEvent.Side.BOTH),
+                                AnimationEvent.InTimeEvent.create(1.3333334F, (livingEntityPatch, assetAccessor, objects) -> BowFunction.bowShoot(livingEntityPatch), AnimationEvent.Side.BOTH),
+                                AnimationEvent.InTimeEvent.create(1.5F, (livingEntityPatch, assetAccessor, objects) -> BowFunction.bowShoot(livingEntityPatch), AnimationEvent.Side.BOTH),
+                                AnimationEvent.InTimeEvent.create(1.6666666F, (livingEntityPatch, assetAccessor, objects) -> BowFunction.bowShoot(livingEntityPatch), AnimationEvent.Side.BOTH),
                                 AnimationEvent.InTimeEvent.create(1.72F, (livingEntityPatch, self, p) -> {
                                     if (!livingEntityPatch.isLogicalClient()) {
                                         livingEntityPatch.playAnimationSynchronized(SmartNpcAnimations.IDLE_BREAK, 0.0F);
@@ -99,8 +100,8 @@ public class AnimsP1neroEpicBow {
         P1NERO_MOB_BOW_JUMP_ATTACK = builder.nextAccessor("biped/p1nero_bow_clone/bow_jump_attack",
                 (accessor) -> (new BowAttackAnimation(0.15F, 0.0F, 0.15F, 0.33333334F, 1.3333334F, InteractionHand.MAIN_HAND, null, Armatures.BIPED.get().rootJoint, accessor, Armatures.BIPED))
                         .addEvents(
-                                AnimationEvent.InTimeEvent.create(0.25F, (livingEntityPatch, assetAccessor, objects) -> PlayerNpcBowFunction.bowShoot(livingEntityPatch), AnimationEvent.Side.BOTH),
-                                AnimationEvent.InTimeEvent.create(0.33333334F, (livingEntityPatch, assetAccessor, objects) -> PlayerNpcBowFunction.bowShoot(livingEntityPatch), AnimationEvent.Side.BOTH),
+                                AnimationEvent.InTimeEvent.create(0.25F, (livingEntityPatch, assetAccessor, objects) -> BowFunction.bowShoot(livingEntityPatch), AnimationEvent.Side.BOTH),
+                                AnimationEvent.InTimeEvent.create(0.33333334F, (livingEntityPatch, assetAccessor, objects) -> BowFunction.bowShoot(livingEntityPatch), AnimationEvent.Side.BOTH),
                                 AnimationEvent.InTimeEvent.create(1.0F, (livingEntityPatch, self, p) -> {
                                     if (!livingEntityPatch.isLogicalClient()) {
                                         livingEntityPatch.playAnimationSynchronized(SmartNpcAnimations.IDLE_BREAK, 0.0F);
