@@ -1,0 +1,91 @@
+{
+    "MAINHAND":  [
+                     {
+                         "id":  "diamond_greataxe",
+                         "min_difficulty":  "EASY"
+                     },
+                     {
+                         "id":  "diamond_staff",
+                         "min_difficulty":  "EASY"
+                     },
+                     {
+                         "id":  "golden_greataxe",
+                         "min_difficulty":  "EASY"
+                     },
+                     {
+                         "id":  "golden_staff",
+                         "min_difficulty":  "EASY"
+                     },
+                     {
+                         "id":  "iron_greataxe",
+                         "min_difficulty":  "EASY"
+                     },
+                     {
+                         "id":  "iron_staff",
+                         "min_difficulty":  "EASY"
+                     },
+                     {
+                         "id":  "stone_staff",
+                         "min_difficulty":  "EASY"
+                     },
+                     {
+                         "id":  "wooden_staff",
+                         "min_difficulty":  "EASY"
+                     }
+                 ],
+    "OFFHAND":  [
+
+                ],
+    "FEET":  [
+                 {
+                     "id":  "diamond_legbottomseal",
+                     "min_difficulty":  "EASY"
+                 },
+                 {
+                     "id":  "emerald_anklebracelet",
+                     "min_difficulty":  "EASY"
+                 },
+                 {
+                     "id":  "golden_mokassin",
+                     "min_difficulty":  "EASY"
+                 }
+             ],
+    "LEGS":  [
+                 {
+                     "id":  "diamond_legtopseal",
+                     "min_difficulty":  "EASY"
+                 },
+                 {
+                     "id":  "emerald_tasset",
+                     "min_difficulty":  "EASY"
+                 },
+                 {
+                     "id":  "golden_chrono",
+                     "min_difficulty":  "EASY"
+                 }
+             ],
+    "CHEST":  [
+                  {
+                      "id":  "diamond_armbracelet",
+                      "min_difficulty":  "EASY"
+                  },
+                  {
+                      "id":  "emerald_chakra",
+                      "min_difficulty":  "EASY"
+                  }
+              ],
+    "HEAD":  [
+                 {
+                     "id":  "diamond_crown",
+                     "min_difficulty":  "EASY"
+                 },
+                 {
+                     "id":  "emerald_earrings",
+                     "min_difficulty":  "EASY"
+                 },
+                 {
+                     "id":  "golden_monocle",
+                     "min_difficulty":  "EASY"
+                 }
+             ]
+}

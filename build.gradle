@@ -11,7 +11,7 @@ version = mod_version
 group = mod_group_id
 
 base {
-    archivesName = "AnnoyingVillagers-PlayerNpcWeaponsExpansion"
+    archivesName = "EpicFight_SmartNpc"
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -68,25 +68,29 @@ repositories {
 }
 
 mixin {
-    add sourceSets.main, 'player_npc_weapons_expansion.mixins.refmap.json'
-    config 'player_npc_weapons_expansion.mixins.json'
+    add sourceSets.main, 'epicfight_smart_npc.mixins.refmap.json'
+    config 'epicfight_smart_npc.mixins.json'
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    implementation fg.deobf("libs:AnnoyingVillagers-1.20.1:1.4.6")
+    implementation fg.deobf("libs:SmartNpc-1.20.1:1.0")
     implementation fg.deobf("curse.maven:epic-fight-invincible-1184379:7679941")
     implementation fg.deobf("curse.maven:epicfight-resurrection-1151542:6931390")
     implementation fg.deobf("curse.maven:epic-fight-mod-rapier-moveset-addon-1036425:8078907")
+    implementation fg.deobf("curse.maven:annoying-villagers-herobrine-invasion-1308998:8352272")
 
     implementation fg.deobf("curse.maven:epic-fight-mod-405076:7919289")
     implementation fg.deobf("curse.maven:combat-evolution-1377795:7866224")
     implementation fg.deobf("curse.maven:weapons-of-miracles-epicfight-918614:7517612")
-    implementation fg.deobf("curse.maven:player-mobs-430513:5780869")
-
-    implementation fg.deobf("curse.maven:spartan-weaponry-278141:6842571")
-    implementation fg.deobf("curse.maven:mcdw-407311:5280243")
-    implementation fg.deobf("curse.maven:epic-knights-armor-and-weapons-509041:7756534")
+    implementation fg.deobf("curse.maven:epicfight-extra-1434276:7961244")
+    implementation fg.deobf("curse.maven:epic-fight-dual-axes-1174112:7647115")
+    implementation fg.deobf("curse.maven:epic-fight-dual-greatswords-updated-1224015:7647220")
+    implementation fg.deobf("curse.maven:p1neros-epic-bow-1338443:7144823")
+    implementation fg.deobf("curse.maven:epicfight-kick-skills-1521559:7966307")
+    implementation fg.deobf("curse.maven:epicfight-dancing-1521730:7967290")
+    implementation fg.deobf("curse.maven:epicfight-nightfall-1307848:8082392")
+    implementation fg.deobf("curse.maven:sword-soaring-1011068:7627333")
 
     compileOnly "io.github.llamalad7:mixinextras-common:0.5.0"
     annotationProcessor "io.github.llamalad7:mixinextras-common:0.5.0"

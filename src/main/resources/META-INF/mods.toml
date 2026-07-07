@@ -9,37 +9,43 @@ displayName="${mod_name}"
 authors="${mod_authors}"
 description='''${mod_description}'''
 
-[[dependencies.player_npc_weapons_expansion]]
+[[dependencies.epicfight_smart_npc]]
     modId="forge"
     mandatory=true
     versionRange="${forge_version_range}"
     ordering="NONE"
     side="BOTH"
-[[dependencies.player_npc_weapons_expansion]]
+[[dependencies.epicfight_smart_npc]]
     modId="minecraft"
     mandatory=true
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
-[[dependencies.player_npc_weapons_expansion]]
+[[dependencies.epicfight_smart_npc]]
+    modId="smart_npc"
+    mandatory=true
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.epicfight_smart_npc]]
     modId="annoyingvillagers"
     mandatory=true
     versionRange="[1.4.2, )"
     ordering="AFTER"
     side="BOTH"
-[[dependencies.player_npc_weapons_expansion]]
+[[dependencies.epicfight_smart_npc]]
     modId="epicfight"
     mandatory=true
     versionRange="[0,)"
     ordering="AFTER"
     side="BOTH"
-[[dependencies.player_npc_weapons_expansion]]
+[[dependencies.epicfight_smart_npc]]
     modId="cdmoveset"
     mandatory=false
     versionRange="[0,)"
     ordering="AFTER"
     side="BOTH"
-[[dependencies.player_npc_weapons_expansion]]
+[[dependencies.epicfight_smart_npc]]
     modId="refm"
     mandatory=false
     versionRange="[0,)"

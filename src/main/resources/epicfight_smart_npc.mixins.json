@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "package": "com.pla.epicfight_smart_npc.mixins",
+  "plugin": "com.pla.epicfight_smart_npc.mixins.CompatMixinPlugin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "epicfight_smart_npc.mixins.refmap.json",
+  "mixins": [
+    "PlayerNpcEntityMixin",
+    "cdmoveset.EquipmentDataLoaderMixin",
+    "cdmoveset.SpecialAttackOnKeyPressedEventMixin",
+    "cdmoveset.CEHumanoidPatchMixin",
+    "refm.SpecialAttackOnKeyPressedEventMixin",
+    "refm.CEHumanoidPatchMixin"
+  ],
+  "client": [
+  ],
+  "minVersion": "0.8"
+}

@@ -1,4 +1,4 @@
-# Annoying Villagers : Player Npc Weapons Expansion
+# EpicFight: SmartNpc
 
 <p align="center">
   <a href="https://www.youtube.com/@pla_is_me" title="YouTube">
@@ -14,7 +14,7 @@
   </a>
 </p>
 
-Compatibility add-ons for **AnnoyingVillagers** that add more weapons for Player NPCs on spawning.
+EpicFight integration and weapon compatibility for SmartNpc.
 
 ---
 
