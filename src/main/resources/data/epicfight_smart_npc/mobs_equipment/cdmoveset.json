@@ -1,115 +1,134 @@
 {
-    "MAINHAND":  [
-                     {
-                         "id":  "katana",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_stone_spear",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_iron_spear",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_golden_spear",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_diamond_spear",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_stone_tachi",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_golden_tachi",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_iron_tachi",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_diamond_tachi",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_stone_sword",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_iron_sword",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_golden_sword",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_diamond_sword",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_stone_longsword",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_iron_longsword",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_golden_longsword",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_diamond_longsword",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_stone_greatsword",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_iron_greatsword",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_golden_greatsword",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_diamond_greatsword",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_iron_dagger",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "s_diamond_dagger",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "great_tachi",
-                         "min_difficulty":  "EASY"
-                     }
-                 ],
-    "OFFHAND":  [
-
-                ],
-    "FEET":  [
-
-             ],
-    "LEGS":  [
-
-             ],
-    "CHEST":  [
-
-              ],
-    "HEAD":  [
-
-             ]
+  "MAINHAND": [
+    {
+      "id": "katana",
+      "min_difficulty": "HARD"
+    },
+    {
+      "id": "s_stone_spear",
+      "min_difficulty": "EASY"
+    },
+    {
+      "id": "s_iron_spear",
+      "min_difficulty": "MEDIUM"
+    },
+    {
+      "id": "s_golden_spear",
+      "min_difficulty": "MEDIUM"
+    },
+    {
+      "id": "s_diamond_spear",
+      "min_difficulty": "HARD"
+    },
+    {
+      "id": "s_netherite_spear",
+      "min_difficulty": "HARD"
+    },
+    {
+      "id": "s_stone_tachi",
+      "min_difficulty": "EASY"
+    },
+    {
+      "id": "s_golden_tachi",
+      "min_difficulty": "MEDIUM"
+    },
+    {
+      "id": "s_iron_tachi",
+      "min_difficulty": "MEDIUM"
+    },
+    {
+      "id": "s_diamond_tachi",
+      "min_difficulty": "HARD"
+    },
+    {
+      "id": "s_netherite_tachi",
+      "min_difficulty": "HARD"
+    },
+    {
+      "id": "s_stone_sword",
+      "min_difficulty": "EASY"
+    },
+    {
+      "id": "s_iron_sword",
+      "min_difficulty": "MEDIUM"
+    },
+    {
+      "id": "s_golden_sword",
+      "min_difficulty": "MEDIUM"
+    },
+    {
+      "id": "s_diamond_sword",
+      "min_difficulty": "HARD"
+    },
+    {
+      "id": "s_netherite_sword",
+      "min_difficulty": "HARD"
+    },
+    {
+      "id": "s_stone_longsword",
+      "min_difficulty": "EASY"
+    },
+    {
+      "id": "s_iron_longsword",
+      "min_difficulty": "MEDIUM"
+    },
+    {
+      "id": "s_golden_longsword",
+      "min_difficulty": "MEDIUM"
+    },
+    {
+      "id": "s_diamond_longsword",
+      "min_difficulty": "HARD"
+    },
+    {
+      "id": "s_netherite_longsword",
+      "min_difficulty": "HARD"
+    },
+    {
+      "id": "s_stone_greatsword",
+      "min_difficulty": "EASY"
+    },
+    {
+      "id": "s_iron_greatsword",
+      "min_difficulty": "MEDIUM"
+    },
+    {
+      "id": "s_golden_greatsword",
+      "min_difficulty": "MEDIUM"
+    },
+    {
+      "id": "s_diamond_greatsword",
+      "min_difficulty": "HARD"
+    },
+    {
+      "id": "s_netherite_greatsword",
+      "min_difficulty": "HARD"
+    },
+    {
+      "id": "s_iron_dagger",
+      "min_difficulty": "MEDIUM"
+    },
+    {
+      "id": "s_diamond_dagger",
+      "min_difficulty": "HARD"
+    },
+    {
+      "id": "s_netherite_dagger",
+      "min_difficulty": "HARD"
+    },
+    {
+      "id": "great_tachi",
+      "min_difficulty": "HARD"
+    }
+  ],
+  "OFFHAND": [
+  ],
+  "FEET": [
+  ],
+  "LEGS": [
+  ],
+  "CHEST": [
+  ],
+  "HEAD": [
+  ]
 }

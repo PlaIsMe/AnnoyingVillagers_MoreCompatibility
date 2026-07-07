@@ -1,35 +1,38 @@
 {
-    "MAINHAND":  [
-                     {
-                         "id":  "iron_rapier",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "gold_rapier",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "diamond_rapier",
-                         "min_difficulty":  "EASY"
-                     },
-                     {
-                         "id":  "oceanite_rapier",
-                         "min_difficulty":  "EASY"
-                     }
-                 ],
-    "OFFHAND":  [
-
-                ],
-    "FEET":  [
-
-             ],
-    "LEGS":  [
-
-             ],
-    "CHEST":  [
-
-              ],
-    "HEAD":  [
-
-             ]
+  "MAINHAND": [
+    {
+      "id": "iron_rapier",
+      "min_difficulty": "MEDIUM"
+    },
+    {
+      "id": "gold_rapier",
+      "min_difficulty": "MEDIUM"
+    },
+    {
+      "id": "diamond_rapier",
+      "min_difficulty": "HARD"
+    },
+    {
+      "id": "netherite_rapier",
+      "min_difficulty": "HARD"
+    },
+    {
+      "id": "witherite_rapier",
+      "min_difficulty": "HARD"
+    },
+    {
+      "id": "oceanite_rapier",
+      "min_difficulty": "HARD"
+    }
+  ],
+  "OFFHAND": [
+  ],
+  "FEET": [
+  ],
+  "LEGS": [
+  ],
+  "CHEST": [
+  ],
+  "HEAD": [
+  ]
 }
