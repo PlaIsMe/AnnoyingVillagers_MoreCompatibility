@@ -7,6 +7,7 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.types.EntityState;
+import yesman.epicfight.api.animation.types.MovementAnimation;
 import yesman.epicfight.api.animation.types.StaticAnimation;
 import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.model.armature.HumanoidArmature;
@@ -14,6 +15,8 @@ import yesman.epicfight.model.armature.HumanoidArmature;
 @Mod.EventBusSubscriber(modid = EpicFightSmartNpc.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class SmartNpcAnimations {
     public static AnimationManager.AnimationAccessor<StaticAnimation> IDLE_BREAK;
+    public static AnimationManager.AnimationAccessor<StaticAnimation> MINING_SWING;
+    public static AnimationManager.AnimationAccessor<MovementAnimation> SNEAK;
     public static AnimationManager.AnimationAccessor<StaticAnimation> SWING_HAND_LEFT;
 
     @SubscribeEvent
@@ -28,6 +31,11 @@ public class SmartNpcAnimations {
         Armatures.ArmatureAccessor<HumanoidArmature> humanoidArmature = Armatures.BIPED;
         IDLE_BREAK = builder.nextAccessor("biped/living/idle_break",
                 accessor -> new StaticAnimation(false, accessor, humanoidArmature));
+        MINING_SWING = builder.nextAccessor("biped/living/dig_mainhand",
+                accessor -> new StaticAnimation(0.1F, true, accessor, humanoidArmature)
+                        .addState(EntityState.CAN_BASIC_ATTACK, false));
+        SNEAK = builder.nextAccessor("biped/living/sneak",
+                accessor -> new MovementAnimation(true, accessor, humanoidArmature));
         SWING_HAND_LEFT = builder.nextAccessor("biped/living/casting_one_hand_top",
                 accessor -> new StaticAnimation(false, accessor, humanoidArmature)
                         .addState(EntityState.CAN_BASIC_ATTACK, false));

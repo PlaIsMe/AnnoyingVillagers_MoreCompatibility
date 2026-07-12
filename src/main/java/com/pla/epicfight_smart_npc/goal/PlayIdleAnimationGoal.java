@@ -1,221 +1,223 @@
-//package com.pla.epicfight_smart_npc.goal;
-//
-//import com.pla.epicfight_smart_npc.IdleAnimation;
-//import com.pla.epicfight_smart_npc.compat.EfDancing;
-//import com.pla.epicfight_smart_npc.gameasset.SmartNpcAnimations;
-//import com.pla.epicfight_smart_npc.util.EpicfightUtil;
-//import com.pla.smart_npc.entity.PlayerNpcEntity;
-//import com.pla.smart_npc.task.DelayedTask;
-//import net.minecraft.network.chat.Component;
-//import net.minecraft.server.level.ServerLevel;
-//import net.minecraft.world.entity.Mob;
-//import net.minecraft.world.entity.ai.goal.Goal;
-//import net.minecraftforge.fml.ModList;
-//import yesman.epicfight.api.animation.types.StaticAnimation;
-//import yesman.epicfight.api.asset.AssetAccessor;
-//import yesman.epicfight.gameasset.Animations;
-//import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
-//
-//import java.util.*;
-//
-//public class PlayIdleAnimationGoal extends Goal {
-//    private final Mob mob;
-//    private final int minDurationTicks;
-//    private int ticksLeft;
-//
-//    private static List<String> keys(String prefix) {
-//        List<String> list = new ArrayList<>(20);
-//        for (int i = 1; i <= 20; i++) {
-//            list.add(prefix + "." + i);
-//        }
-//        return List.copyOf(list);
-//    }
-//
-//    private static final Map<IdleAnimation, List<String>> idleMessageKeys = Map.ofEntries(
-//            Map.entry(IdleAnimation.LAY, keys("idle.annoyingvillagers.lay")),
-//            Map.entry(IdleAnimation.SLEEP, keys("idle.annoyingvillagers.sleep")),
-//            Map.entry(IdleAnimation.SIT, keys("idle.annoyingvillagers.sit")),
-//            Map.entry(IdleAnimation.FUN_SIT, keys("idle.annoyingvillagers.fun_sit")),
-//            Map.entry(IdleAnimation.SLIGHT, keys("idle.annoyingvillagers.slight")),
-//            Map.entry(IdleAnimation.PUSH_UP, keys("idle.annoyingvillagers.push_up")),
-//            Map.entry(IdleAnimation.LAY_RELAX_EMOTE, keys("idle.annoyingvillagers.lay_relax_emote")),
-//            Map.entry(IdleAnimation.ONE_ARM_LAY_EMOTE, keys("idle.annoyingvillagers.one_arm_lay_emote")),
-//            Map.entry(IdleAnimation.SALUTE_LEFT_HAND_EMOTE, keys("idle.annoyingvillagers.salute_left_hand_emote")),
-//            Map.entry(IdleAnimation.SIT_NO_WEAPON_EMOTE, keys("idle.annoyingvillagers.sit_no_weapon_emote")),
-//            Map.entry(IdleAnimation.SORROW_EMOTE, keys("idle.annoyingvillagers.sorrow_emote")),
-//            Map.entry(IdleAnimation.SURRENDER_EMOTE, keys("idle.annoyingvillagers.surrender_emote")),
-//            Map.entry(IdleAnimation.ATTENTION_EMOTE, keys("idle.annoyingvillagers.attention_emote")),
-//            Map.entry(IdleAnimation.FLAPPING_EMOTE, keys("idle.annoyingvillagers.flapping_emote")),
-//            Map.entry(IdleAnimation.FUN_JUMP_EMOTE, keys("idle.annoyingvillagers.fun_jump_emote")),
-//            Map.entry(IdleAnimation.JUMP_EMOTE, keys("idle.annoyingvillagers.jump_emote")),
-//            Map.entry(IdleAnimation.PRONE_EMOTE, keys("idle.annoyingvillagers.prone_emote")),
-//            Map.entry(IdleAnimation.SALUTE_EMOTE, keys("idle.annoyingvillagers.salute_emote"))
-//    );
-//
-//    public PlayIdleAnimationGoal(Mob mob, int minDurationTicks) {
-//        this.mob = mob;
-//        this.minDurationTicks = minDurationTicks;
-//        this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
-//    }
-//
-//    @Override
-//    public boolean canUse() {
-//        if (!ModList.get().isLoaded("efdancing")) return false;
-//        if (mob.level().isClientSide) return false;
-//        if (mob.tickCount <= 30) return false;
-//        if (!mob.isAlive() || mob.isRemoved() || mob.isDeadOrDying()) return false;
-//        if (mob.isPassenger()) return false;
-//        if (mob.getTarget() != null) return false;
-//        if (mob.getNavigation().isInProgress()) return false;
-//        if (!mob.onGround()) return false;
-//        if (mob instanceof PlayerNpcEntity playerNpcEntity
-//                && (playerNpcEntity.isHealing()
-//                || playerNpcEntity.getPlayingIdleCooldown() != 0
-//                || playerNpcEntity.isStrolling())) {
-//            return false;
-//        }
-//        LivingEntityPatch<?> patch = null;
-//        if (mob instanceof PlayerNpcEntity playerNpcEntity) {
-//            patch = playerNpcEntity.getLivingEntityPatch();
-//        }
-//        if (patch == null) return false;
-//        AssetAccessor<? extends StaticAnimation> dynamicAnimation = Objects.requireNonNull(patch.getAnimator().getPlayerFor(null)).getRealAnimation();
-//        if (EpicfightUtil.isLongHitAnimation(dynamicAnimation, patch)) return false;
-//        return dynamicAnimation == Animations.EMPTY_ANIMATION;
-//    }
-//
-//    @Override
-//    public boolean canContinueToUse() {
-//        if (!ModList.get().isLoaded("efdancing")) return false;
-//        if (mob.level().isClientSide) return false;
-//        if (mob.tickCount <= 30) return false;
-//        if (!mob.isAlive() || mob.isRemoved() || mob.isDeadOrDying()) return false;
-//        if (mob.isPassenger()) return false;
-//        if (!mob.onGround()) return false;
-//        if (mob.getTarget() != null) return false;
-//        if (mob.getNavigation().isInProgress()) return false;
-//        if (mob instanceof PlayerNpcEntity playerNpcEntity
-//                && (playerNpcEntity.isHealing()
-//                || playerNpcEntity.getPlayingIdleCooldown() != 0
-//                || playerNpcEntity.isStrolling())) {
-//            return false;
-//        }
-//        LivingEntityPatch<?> patch = null;
-//        if (mob instanceof PlayerNpcEntity playerNpcEntity) {
-//            patch = playerNpcEntity.getLivingEntityPatch();
-//        }
-//        if (patch == null) return false;
-//        AssetAccessor<? extends StaticAnimation> dynamicAnimation = Objects.requireNonNull(patch.getAnimator().getPlayerFor(null)).getRealAnimation();
-//        if (EpicfightUtil.isLongHitAnimation(dynamicAnimation, patch)) return false;
-//        return ticksLeft > 0;
-//    }
-//
-//    @Override
-//    public void start() {
-//        if (!ModList.get().isLoaded("efdancing")) return;
-//        if (!mob.isAlive() || mob.isRemoved() || mob.isDeadOrDying()) return;
-//        ticksLeft = minDurationTicks;
-//
-//        mob.getNavigation().stop();
-//        mob.setDeltaMovement(0, 0, 0);
-//        IdleAnimation choice = null;
-//        if (mob instanceof PlayerNpcEntity playerNpcEntity) {
-//            choice = playerNpcEntity.getIdleAnimationChoice();
-//        }
-//        if (choice == null) {
-//            choice = pickIdleAnimation();
-//            if (mob instanceof PlayerNpcEntity playerNpcEntity) {
-//                playerNpcEntity.setIdleAnimationChoice(choice);
-//            }
-//        }
-//
-//        AssetAccessor<? extends StaticAnimation> anim = resolveAnimation(choice);
-//        if (mob instanceof PlayerNpcEntity playerNpcEntity) {
-//            playerNpcEntity.setIdleAnimation(anim);
-//        }
-//
-//        if (mob instanceof PlayerNpcEntity playerNpcEntity) {
-//            playerNpcEntity.setPlayingIdle(true);
-//        }
-//
-//        IdleAnimation finalChoice = choice;
-//        new DelayedTask(30) {
-//            @Override
-//            public void run() {
-//                if (mob.getTarget() != null) return;
-//                if (!mob.isAlive() || mob.isRemoved() || mob.isDeadOrDying()) return;
-//                playIdleAnimation(anim);
-//            }
-//        };
-//    }
-//
-//    @Override
-//    public void tick() {
-//        if (!ModList.get().isLoaded("efdancing")) {
-//            ticksLeft = 0;
-//            return;
-//        }
-//        if (mob.getTarget() != null || mob.getNavigation().isInProgress() || !mob.onGround()) {
-//            ticksLeft = 0;
-//            return;
-//        }
-//
-//        if (!(mob.level() instanceof ServerLevel)) return;
-//
-//        mob.getNavigation().stop();
-//        mob.setDeltaMovement(0, 0, 0);
-//
-//        LivingEntityPatch<?> patch = null;
-//        if (mob instanceof PlayerNpcEntity playerNpcEntity) {
-//            patch = playerNpcEntity.getLivingEntityPatch();
-//        }
-//        AssetAccessor<? extends StaticAnimation> idleAnimation = null;
-//        if (mob instanceof PlayerNpcEntity playerNpcEntity) {
-//            idleAnimation = playerNpcEntity.getIdleAnimation();
-//        }
-//        if (patch != null && idleAnimation != null) {
-//            AssetAccessor<? extends StaticAnimation> staticAnimation =
-//                    Objects.requireNonNull(patch.getAnimator().getPlayerFor(null)).getRealAnimation();
-//            if (staticAnimation == idleAnimation) {
-//                // correct animation, do nothing
-//            } else {
-//                if (mob instanceof PlayerNpcEntity playerNpcEntity) {
-//                    playIdleAnimation(playerNpcEntity.getIdleAnimation());
-//                }
-//            }
-//        }
-//        ticksLeft--;
-//    }
-//
-//    @Override
-//    public void stop() {
-//        if (mob instanceof PlayerNpcEntity playerNpcEntity) {
-//            playerNpcEntity.clearIdleAnimationState();
-//            LivingEntityPatch<?> patch = playerNpcEntity.getLivingEntityPatch();
-//            if (patch != null) patch.playAnimationSynchronized(SmartNpcAnimations.IDLE_BREAK, 0.0F);
-//            playerNpcEntity.setPlayingIdle(false);
-//            playerNpcEntity.setPlayingIdleCooldown(new Random().nextInt(400, 1200));
-//        }
-//    }
-//
-//    private void playIdleAnimation(AssetAccessor<? extends StaticAnimation> anim) {
-//        if (!mob.isAlive() || mob.isRemoved() || mob.isDeadOrDying()) return;
-//        LivingEntityPatch<?> patch = null;
-//        if (mob instanceof PlayerNpcEntity playerNpcEntity) {
-//            patch = playerNpcEntity.getLivingEntityPatch();
-//        }
-//        if (patch != null) {
-//            patch.playAnimationSynchronized(anim, 0.0F);
-//        }
-//    }
-//
-//    private IdleAnimation pickIdleAnimation() {
-//        IdleAnimation[] all = IdleAnimation.values();
-//        return all[mob.getRandom().nextInt(all.length)];
-//    }
-//
-//    private AssetAccessor<? extends StaticAnimation> resolveAnimation(IdleAnimation idle) {
-//        return EfDancing.resolveIdleAnimation(idle);
-//    }
-//}
-//
+package com.pla.epicfight_smart_npc.goal;
+
+import com.pla.epicfight_smart_npc.IdleAnimation;
+import com.pla.epicfight_smart_npc.access.PlayerNpcIdleAnimationAccess;
+import com.pla.epicfight_smart_npc.compat.EfDancing;
+import com.pla.epicfight_smart_npc.gameasset.SmartNpcAnimations;
+import com.pla.epicfight_smart_npc.util.EpicfightUtil;
+import com.pla.smart_npc.entity.PlayerNpcEntity;
+import com.pla.smart_npc.task.DelayedTask;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraftforge.fml.ModList;
+import yesman.epicfight.api.animation.types.StaticAnimation;
+import yesman.epicfight.api.asset.AssetAccessor;
+import yesman.epicfight.gameasset.Animations;
+import yesman.epicfight.world.capabilities.EpicFightCapabilities;
+import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
+
+import java.util.*;
+
+public class PlayIdleAnimationGoal extends Goal {
+    private final Mob mob;
+    private final int minDurationTicks;
+    private int ticksLeft;
+
+    private static List<String> keys(String prefix) {
+        List<String> list = new ArrayList<>(20);
+        for (int i = 1; i <= 20; i++) {
+            list.add(prefix + "." + i);
+        }
+        return List.copyOf(list);
+    }
+
+    private static final Map<IdleAnimation, List<String>> idleMessageKeys = Map.ofEntries(
+            Map.entry(IdleAnimation.LAY, keys("idle.annoyingvillagers.lay")),
+            Map.entry(IdleAnimation.SLEEP, keys("idle.annoyingvillagers.sleep")),
+            Map.entry(IdleAnimation.SIT, keys("idle.annoyingvillagers.sit")),
+            Map.entry(IdleAnimation.FUN_SIT, keys("idle.annoyingvillagers.fun_sit")),
+            Map.entry(IdleAnimation.SLIGHT, keys("idle.annoyingvillagers.slight")),
+            Map.entry(IdleAnimation.PUSH_UP, keys("idle.annoyingvillagers.push_up")),
+            Map.entry(IdleAnimation.LAY_RELAX_EMOTE, keys("idle.annoyingvillagers.lay_relax_emote")),
+            Map.entry(IdleAnimation.ONE_ARM_LAY_EMOTE, keys("idle.annoyingvillagers.one_arm_lay_emote")),
+            Map.entry(IdleAnimation.SALUTE_LEFT_HAND_EMOTE, keys("idle.annoyingvillagers.salute_left_hand_emote")),
+            Map.entry(IdleAnimation.SIT_NO_WEAPON_EMOTE, keys("idle.annoyingvillagers.sit_no_weapon_emote")),
+            Map.entry(IdleAnimation.SORROW_EMOTE, keys("idle.annoyingvillagers.sorrow_emote")),
+            Map.entry(IdleAnimation.SURRENDER_EMOTE, keys("idle.annoyingvillagers.surrender_emote")),
+            Map.entry(IdleAnimation.ATTENTION_EMOTE, keys("idle.annoyingvillagers.attention_emote")),
+            Map.entry(IdleAnimation.FLAPPING_EMOTE, keys("idle.annoyingvillagers.flapping_emote")),
+            Map.entry(IdleAnimation.FUN_JUMP_EMOTE, keys("idle.annoyingvillagers.fun_jump_emote")),
+            Map.entry(IdleAnimation.JUMP_EMOTE, keys("idle.annoyingvillagers.jump_emote")),
+            Map.entry(IdleAnimation.PRONE_EMOTE, keys("idle.annoyingvillagers.prone_emote")),
+            Map.entry(IdleAnimation.SALUTE_EMOTE, keys("idle.annoyingvillagers.salute_emote"))
+    );
+
+    public PlayIdleAnimationGoal(Mob mob, int minDurationTicks) {
+        this.mob = mob;
+        this.minDurationTicks = minDurationTicks;
+        this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
+    }
+
+    @Override
+    public boolean canUse() {
+        if (!ModList.get().isLoaded("efdancing")) return false;
+        if (mob.level().isClientSide) return false;
+        if (mob.tickCount <= 30) return false;
+        if (!mob.isAlive() || mob.isRemoved() || mob.isDeadOrDying()) return false;
+        if (mob.isPassenger()) return false;
+        if (mob.getTarget() != null) return false;
+        if (mob.getNavigation().isInProgress()) return false;
+        if (!mob.onGround()) return false;
+        if (mob instanceof PlayerNpcEntity playerNpcEntity
+                && (playerNpcEntity.isHealing()
+                || playerNpcEntity.getPlayingIdleCooldown() != 0)) {
+            return false;
+        }
+        LivingEntityPatch<?> patch = getLivingEntityPatch();
+        if (patch == null) return false;
+        AssetAccessor<? extends StaticAnimation> dynamicAnimation = Objects.requireNonNull(patch.getAnimator().getPlayerFor(null)).getRealAnimation();
+        if (EpicfightUtil.isLongHitAnimation(dynamicAnimation, patch)) return false;
+        return dynamicAnimation == Animations.EMPTY_ANIMATION;
+    }
+
+    @Override
+    public boolean canContinueToUse() {
+        if (!ModList.get().isLoaded("efdancing")) return false;
+        if (mob.level().isClientSide) return false;
+        if (mob.tickCount <= 30) return false;
+        if (!mob.isAlive() || mob.isRemoved() || mob.isDeadOrDying()) return false;
+        if (mob.isPassenger()) return false;
+        if (!mob.onGround()) return false;
+        if (mob.getTarget() != null) return false;
+        if (mob.getNavigation().isInProgress()) return false;
+        if (mob instanceof PlayerNpcEntity playerNpcEntity
+                && (playerNpcEntity.isHealing()
+                || playerNpcEntity.getPlayingIdleCooldown() != 0)) {
+            return false;
+        }
+        LivingEntityPatch<?> patch = getLivingEntityPatch();
+        if (patch == null) return false;
+        AssetAccessor<? extends StaticAnimation> dynamicAnimation = Objects.requireNonNull(patch.getAnimator().getPlayerFor(null)).getRealAnimation();
+        if (EpicfightUtil.isLongHitAnimation(dynamicAnimation, patch)) return false;
+        return ticksLeft > 0;
+    }
+
+    @Override
+    public void start() {
+        if (!ModList.get().isLoaded("efdancing")) return;
+        if (!mob.isAlive() || mob.isRemoved() || mob.isDeadOrDying()) return;
+        PlayerNpcIdleAnimationAccess idleAccess = idleAnimationAccess();
+        if (idleAccess == null) {
+            ticksLeft = 0;
+            return;
+        }
+        ticksLeft = minDurationTicks;
+
+        mob.getNavigation().stop();
+        mob.setDeltaMovement(0, 0, 0);
+        IdleAnimation choice = idleAccess.epicfightSmartNpc$getIdleAnimationChoice();
+        if (choice == null) {
+            choice = pickIdleAnimation();
+            idleAccess.epicfightSmartNpc$setIdleAnimationChoice(choice);
+        }
+
+        AssetAccessor<? extends StaticAnimation> anim = resolveAnimation(choice);
+        idleAccess.epicfightSmartNpc$setIdleAnimation(anim);
+        idleAccess.epicfightSmartNpc$setPlayingIdle(true);
+
+        new DelayedTask(30) {
+            @Override
+            public void run() {
+                if (!isIdleAnimationActive()) return;
+                if (mob.getTarget() != null) return;
+                if (!mob.isAlive() || mob.isRemoved() || mob.isDeadOrDying()) return;
+                playIdleAnimation(anim);
+            }
+        };
+    }
+
+    @Override
+    public void tick() {
+        if (!ModList.get().isLoaded("efdancing")) {
+            ticksLeft = 0;
+            return;
+        }
+        if (mob.getTarget() != null || mob.getNavigation().isInProgress() || !mob.onGround()) {
+            ticksLeft = 0;
+            return;
+        }
+
+        if (!(mob.level() instanceof ServerLevel)) return;
+        PlayerNpcIdleAnimationAccess idleAccess = idleAnimationAccess();
+        if (idleAccess == null) {
+            ticksLeft = 0;
+            return;
+        }
+
+        mob.getNavigation().stop();
+        mob.setDeltaMovement(0, 0, 0);
+
+        LivingEntityPatch<?> patch = getLivingEntityPatch();
+        AssetAccessor<? extends StaticAnimation> idleAnimation = idleAccess.epicfightSmartNpc$getIdleAnimation();
+        if (patch != null && idleAnimation != null) {
+            AssetAccessor<? extends StaticAnimation> staticAnimation =
+                    Objects.requireNonNull(patch.getAnimator().getPlayerFor(null)).getRealAnimation();
+            if (staticAnimation == idleAnimation) {
+                // correct animation, do nothing
+            } else {
+                playIdleAnimation(idleAccess.epicfightSmartNpc$getIdleAnimation());
+            }
+        }
+        ticksLeft--;
+    }
+
+    @Override
+    public void stop() {
+        PlayerNpcIdleAnimationAccess idleAccess = idleAnimationAccess();
+        if (mob instanceof PlayerNpcEntity playerNpcEntity && idleAccess != null) {
+            idleAccess.epicfightSmartNpc$clearIdleAnimationState();
+            LivingEntityPatch<?> patch = getLivingEntityPatch();
+            if (patch != null) patch.playAnimationSynchronized(SmartNpcAnimations.IDLE_BREAK, 0.0F);
+            idleAccess.epicfightSmartNpc$setPlayingIdle(false);
+            playerNpcEntity.setPlayingIdleCooldown(new Random().nextInt(400, 1200));
+        }
+    }
+
+    private void playIdleAnimation(AssetAccessor<? extends StaticAnimation> anim) {
+        if (!mob.isAlive() || mob.isRemoved() || mob.isDeadOrDying()) return;
+        LivingEntityPatch<?> patch = getLivingEntityPatch();
+        if (patch != null) {
+            patch.playAnimationSynchronized(anim, 0.0F);
+        }
+    }
+
+    private IdleAnimation pickIdleAnimation() {
+        IdleAnimation[] all = IdleAnimation.values();
+        return all[mob.getRandom().nextInt(all.length)];
+    }
+
+    private AssetAccessor<? extends StaticAnimation> resolveAnimation(IdleAnimation idle) {
+        return EfDancing.resolveIdleAnimation(idle);
+    }
+
+    private LivingEntityPatch<?> getLivingEntityPatch() {
+        if (mob instanceof PlayerNpcEntity playerNpcEntity) {
+            return EpicFightCapabilities.getEntityPatch(playerNpcEntity, LivingEntityPatch.class);
+        }
+        return null;
+    }
+
+    private PlayerNpcIdleAnimationAccess idleAnimationAccess() {
+        if (mob instanceof PlayerNpcIdleAnimationAccess idleAnimationAccess) {
+            return idleAnimationAccess;
+        }
+        return null;
+    }
+
+    private boolean isIdleAnimationActive() {
+        PlayerNpcIdleAnimationAccess idleAccess = idleAnimationAccess();
+        return idleAccess != null && idleAccess.epicfightSmartNpc$isPlayingIdle();
+    }
+}

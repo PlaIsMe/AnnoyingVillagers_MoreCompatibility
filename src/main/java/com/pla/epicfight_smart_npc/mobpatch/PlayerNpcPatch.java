@@ -12,6 +12,7 @@ import com.pla.epicfight_smart_npc.compat.annoyingvillagers.AnnoyingVillagers;
 import com.pla.epicfight_smart_npc.compat.dualaxes.PlayerNpcDualAxe;
 import com.pla.epicfight_smart_npc.compat.dualgreatsword.PlayerNpcDualGreatsword;
 import com.pla.epicfight_smart_npc.compat.epicfightx.*;
+import com.pla.epicfight_smart_npc.gameasset.SmartNpcAnimations;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
@@ -55,7 +56,35 @@ public class PlayerNpcPatch extends CEHumanoidPatch<PathfinderMob> implements Cu
         animator.addLivingAnimation(LivingMotions.WALK, Animations.BIPED_WALK);
         animator.addLivingAnimation(LivingMotions.RUN, Animations.BIPED_RUN);
         animator.addLivingAnimation(LivingMotions.CHASE, Animations.BIPED_RUN);
+        AnimationAccessor<? extends StaticAnimation> sneakAnimation = sneakAnimation();
+        if (sneakAnimation != null) {
+            animator.addLivingAnimation(LivingMotions.SNEAK, sneakAnimation);
+        }
+        if (SmartNpcAnimations.MINING_SWING != null) {
+            animator.addLivingAnimation(LivingMotions.DIGGING, SmartNpcAnimations.MINING_SWING);
+        } else if (Animations.BIPED_DIG != null) {
+            animator.addLivingAnimation(LivingMotions.DIGGING, Animations.BIPED_DIG);
+        }
         animator.addLivingAnimation(LivingMotions.DEATH, Animations.BIPED_DEATH);
+    }
+
+    @Override
+    public void updateMotion(boolean considerInaction) {
+        super.updateMotion(considerInaction);
+
+        PathfinderMob original = this.getOriginal();
+        if ((original.isShiftKeyDown() || original.isCrouching())
+                && (this.currentLivingMotion == LivingMotions.IDLE
+                || this.currentLivingMotion == LivingMotions.WALK
+                || this.currentLivingMotion == LivingMotions.RUN
+                || this.currentLivingMotion == LivingMotions.CHASE)) {
+            this.currentLivingMotion = LivingMotions.SNEAK;
+            this.currentCompositeMotion = LivingMotions.SNEAK;
+        }
+    }
+
+    private static AnimationAccessor<? extends StaticAnimation> sneakAnimation() {
+        return SmartNpcAnimations.SNEAK != null ? SmartNpcAnimations.SNEAK : Animations.BIPED_SNEAK;
     }
 
     protected void setWeaponMotions() {
@@ -64,6 +93,7 @@ public class PlayerNpcPatch extends CEHumanoidPatch<PathfinderMob> implements Cu
                         ImmutableMap.of(Styles.COMMON,
                                 Set.of(
                                         Pair.of(LivingMotions.IDLE, Animations.BIPED_IDLE),
+                                        Pair.of(LivingMotions.SNEAK, sneakAnimation()),
                                         Pair.of(LivingMotions.WALK, Animations.BIPED_WALK),
                                         Pair.of(LivingMotions.RUN, Animations.BIPED_RUN),
                                         Pair.of(LivingMotions.CHASE, Animations.BIPED_RUN),
@@ -78,6 +108,7 @@ public class PlayerNpcPatch extends CEHumanoidPatch<PathfinderMob> implements Cu
                         ImmutableMap.of(Styles.COMMON,
                                 Set.of(
                                         Pair.of(LivingMotions.IDLE, Animations.BIPED_IDLE),
+                                        Pair.of(LivingMotions.SNEAK, sneakAnimation()),
                                         Pair.of(LivingMotions.WALK, Animations.BIPED_WALK),
                                         Pair.of(LivingMotions.RUN, Animations.BIPED_RUN),
                                         Pair.of(LivingMotions.CHASE, Animations.BIPED_RUN),
