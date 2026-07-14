@@ -7,8 +7,8 @@
   "mixins": [
     "ai.BreakingBlockAiMixin",
     "ai.PillarUpAiMixin",
-    "ai.SneakingAiMixin",
     "BeingAtHomeGoalMixin",
+    "goal.EscapeHoleWithBlockGoalMixin",
     "PlayerNpcEntityMixin",
     "annoyingvillagers.EquipmentDataLoaderMixin",
     "cdmoveset.EquipmentDataLoaderMixin",
@@ -16,6 +16,7 @@
     "refm.CEHumanoidPatchMixin"
   ],
   "client": [
+    "client.PatchedLivingEntityRendererMixin"
   ],
   "minVersion": "0.8"
 }

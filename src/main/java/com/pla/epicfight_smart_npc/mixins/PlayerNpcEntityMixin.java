@@ -4,6 +4,7 @@ import com.pla.epicfight_smart_npc.IdleAnimation;
 import com.pla.epicfight_smart_npc.access.PlayerNpcIdleAnimationAccess;
 import com.pla.epicfight_smart_npc.goal.KeepPositionGoal;
 import com.pla.epicfight_smart_npc.util.CombatBehaviour;
+import com.pla.epicfight_smart_npc.util.EpicFightAiAnimation;
 import com.pla.epicfight_smart_npc.util.EpicfightUtil;
 import com.pla.smart_npc.clazz.FakePlayer;
 import com.pla.smart_npc.entity.PlayerNpcEntity;
@@ -88,6 +89,11 @@ public abstract class PlayerNpcEntityMixin extends FakePlayer implements PlayerN
     @Inject(method = "registerGoals", at = @At("TAIL"))
     private void epicfightSmartNpc$registerKeepPositionGoal(CallbackInfo ci) {
         this.goalSelector.addGoal(1, new KeepPositionGoal((PlayerNpcEntity) (Object) this));
+    }
+
+    @Inject(method = "triggerMainHandUseAnimation", at = @At("TAIL"))
+    private void epicfightSmartNpc$playMainHandUseAnimation(CallbackInfo ci) {
+        EpicFightAiAnimation.playMainHandUse((PlayerNpcEntity) (Object) this);
     }
 
     @Inject(method = "tick", at = @At("TAIL"))

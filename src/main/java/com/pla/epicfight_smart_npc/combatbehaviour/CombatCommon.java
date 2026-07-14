@@ -3,6 +3,7 @@ package com.pla.epicfight_smart_npc.combatbehaviour;
 import com.pla.epicfight_smart_npc.compat.EfKick;
 import com.pla.epicfight_smart_npc.compat.annoyingvillagers.AnnoyingVillagers;
 import com.pla.epicfight_smart_npc.gameasset.SmartNpcAnimations;
+import com.pla.epicfight_smart_npc.util.EpicFightAiAnimation;
 import com.pla.epicfight_smart_npc.util.EscapeUtil;
 import com.pla.epicfight_smart_npc.util.MobExecutionTask;
 import com.pla.smart_npc.entity.PlayerNpcEntity;
@@ -738,7 +739,8 @@ public class CombatCommon {
 
     private static void placeIfReplaceable(ServerLevel level, BlockPos pos, BlockState state, Mob mob) {
         if (!level.getBlockState(pos).canBeReplaced()) return;
-        if (mob instanceof PlayerNpcEntity) {
+        PlayerNpcEntity playerNpc = mob instanceof PlayerNpcEntity playerNpcEntity ? playerNpcEntity : null;
+        if (playerNpc != null) {
             ItemStack consumedBlock = InventoryUtils.consumePlaceableBlock(mob).orElse(ItemStack.EMPTY);
             if (consumedBlock.isEmpty()) {
                 return;
@@ -750,6 +752,9 @@ public class CombatCommon {
             state = inventoryState;
         }
         mob.swing(InteractionHand.MAIN_HAND, true);
+        if (playerNpc != null) {
+            EpicFightAiAnimation.playMainHandUse(playerNpc);
+        }
         mob.playSound(SoundEvents.STONE_PLACE, 2.0F, 1.0F);
         level.setBlockAndUpdate(pos, state);
     }

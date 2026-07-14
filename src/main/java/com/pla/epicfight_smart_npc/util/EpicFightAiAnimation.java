@@ -2,7 +2,9 @@ package com.pla.epicfight_smart_npc.util;
 
 import com.pla.epicfight_smart_npc.gameasset.SmartNpcAnimations;
 import com.pla.smart_npc.entity.PlayerNpcEntity;
+import com.pla.smart_npc.task.DelayedTask;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.InteractionHand;
 import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.animation.Animator;
 import yesman.epicfight.api.animation.types.StaticAnimation;
@@ -14,16 +16,34 @@ import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
 public final class EpicFightAiAnimation {
     private static final String DIGGING_ANIMATION_ACTIVE_KEY = "epicfight_smart_npc_digging_animation_active";
     private static final String LAST_DIGGING_ANIMATION_SYNC_TICK_KEY = "epicfight_smart_npc_last_digging_animation_sync_tick";
-    private static final String SNEAK_ANIMATION_ACTIVE_KEY = "epicfight_smart_npc_sneak_animation_active";
-    private static final String LAST_SNEAK_ANIMATION_SYNC_TICK_KEY = "epicfight_smart_npc_last_sneak_animation_sync_tick";
+    private static final String LAST_MAIN_HAND_USE_ANIMATION_TICK_KEY = "epicfight_smart_npc_last_main_hand_use_animation_tick";
     private static final int DIGGING_ANIMATION_RESYNC_TICKS = 10;
-    private static final int SNEAK_ANIMATION_RESYNC_TICKS = 20;
+    private static final int MAIN_HAND_USE_ANIMATION_STOP_TICKS = 6;
 
     private EpicFightAiAnimation() {
     }
 
     public static void playMiningSwing(PlayerNpcEntity playerNpc) {
         playSynchronized(playerNpc, EpicFightAiAnimation::miningSwingAnimation);
+    }
+
+    public static void playMainHandUse(PlayerNpcEntity playerNpc) {
+        if (!canAnimate(playerNpc)) {
+            return;
+        }
+
+        LivingEntityPatch<?> patch = getPatch(playerNpc);
+        if (patch == null) {
+            return;
+        }
+
+        AssetAccessor<? extends StaticAnimation> animation = miningSwingAnimation(patch);
+        if (playIfPresent(patch, animation)) {
+            long useTick = playerNpc.level().getGameTime();
+            playerNpc.getPersistentData().putLong(LAST_MAIN_HAND_USE_ANIMATION_TICK_KEY, useTick);
+            swingMainHand(playerNpc);
+            stopMainHandUseAnimationLater(playerNpc, animation, useTick);
+        }
     }
 
     public static void updateDigging(PlayerNpcEntity playerNpc, boolean digging) {
@@ -55,6 +75,7 @@ public final class EpicFightAiAnimation {
         boolean active = persistentData.getBoolean(DIGGING_ANIMATION_ACTIVE_KEY);
         long lastSyncTick = persistentData.getLong(LAST_DIGGING_ANIMATION_SYNC_TICK_KEY);
         if (!active || gameTime - lastSyncTick >= DIGGING_ANIMATION_RESYNC_TICKS) {
+            swingMainHand(playerNpc);
             if (playIfPresent(patch, miningSwingAnimation(patch))) {
                 persistentData.putBoolean(DIGGING_ANIMATION_ACTIVE_KEY, true);
                 persistentData.putLong(LAST_DIGGING_ANIMATION_SYNC_TICK_KEY, gameTime);
@@ -64,40 +85,6 @@ public final class EpicFightAiAnimation {
 
     public static void playPillarJump(PlayerNpcEntity playerNpc) {
         playSynchronized(playerNpc, patch -> Animations.BIPED_JUMP);
-    }
-
-    public static void updateSneaking(PlayerNpcEntity playerNpc, boolean sneaking) {
-        if (!canAnimate(playerNpc)) {
-            return;
-        }
-
-        LivingEntityPatch<?> patch = getPatch(playerNpc);
-        if (patch == null) {
-            return;
-        }
-
-        CompoundTag persistentData = playerNpc.getPersistentData();
-        if (!sneaking) {
-            if (persistentData.getBoolean(SNEAK_ANIMATION_ACTIVE_KEY)) {
-                stopIfPresent(patch, sneakAnimation());
-                persistentData.remove(SNEAK_ANIMATION_ACTIVE_KEY);
-                persistentData.remove(LAST_SNEAK_ANIMATION_SYNC_TICK_KEY);
-            }
-            return;
-        }
-
-        patch.currentLivingMotion = LivingMotions.SNEAK;
-        patch.currentCompositeMotion = LivingMotions.SNEAK;
-
-        long gameTime = playerNpc.level().getGameTime();
-        boolean active = persistentData.getBoolean(SNEAK_ANIMATION_ACTIVE_KEY);
-        long lastSyncTick = persistentData.getLong(LAST_SNEAK_ANIMATION_SYNC_TICK_KEY);
-        if (!active || gameTime - lastSyncTick >= SNEAK_ANIMATION_RESYNC_TICKS) {
-            if (playIfPresent(patch, sneakAnimation())) {
-                persistentData.putBoolean(SNEAK_ANIMATION_ACTIVE_KEY, true);
-                persistentData.putLong(LAST_SNEAK_ANIMATION_SYNC_TICK_KEY, gameTime);
-            }
-        }
     }
 
     private static void playSynchronized(PlayerNpcEntity playerNpc, AnimationResolver animationResolver) {
@@ -126,8 +113,31 @@ public final class EpicFightAiAnimation {
         return animator == null ? null : animator.getLivingAnimation(LivingMotions.DIGGING, SmartNpcAnimations.MINING_SWING);
     }
 
-    private static AssetAccessor<? extends StaticAnimation> sneakAnimation() {
-        return firstPresent(SmartNpcAnimations.SNEAK, Animations.BIPED_SNEAK);
+    private static void stopMainHandUseAnimationLater(PlayerNpcEntity playerNpc, AssetAccessor<? extends StaticAnimation> animation, long useTick) {
+        new DelayedTask(MAIN_HAND_USE_ANIMATION_STOP_TICKS) {
+            @Override
+            public void run() {
+                if (!canAnimate(playerNpc)) {
+                    return;
+                }
+
+                CompoundTag persistentData = playerNpc.getPersistentData();
+                if (persistentData.getLong(LAST_MAIN_HAND_USE_ANIMATION_TICK_KEY) != useTick) {
+                    return;
+                }
+
+                persistentData.remove(LAST_MAIN_HAND_USE_ANIMATION_TICK_KEY);
+                if (persistentData.getBoolean(DIGGING_ANIMATION_ACTIVE_KEY)) {
+                    return;
+                }
+
+                stopIfPresent(getPatch(playerNpc), animation);
+            }
+        };
+    }
+
+    private static void swingMainHand(PlayerNpcEntity playerNpc) {
+        playerNpc.swing(InteractionHand.MAIN_HAND, true);
     }
 
     @SafeVarargs
