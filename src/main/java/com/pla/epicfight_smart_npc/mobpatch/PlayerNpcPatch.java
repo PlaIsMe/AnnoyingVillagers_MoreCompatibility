@@ -13,6 +13,8 @@ import com.pla.epicfight_smart_npc.compat.dualaxes.PlayerNpcDualAxe;
 import com.pla.epicfight_smart_npc.compat.dualgreatsword.PlayerNpcDualGreatsword;
 import com.pla.epicfight_smart_npc.compat.epicfightx.*;
 import com.pla.epicfight_smart_npc.gameasset.SmartNpcAnimations;
+import com.pla.epicfight_smart_npc.util.EpicFightAiAnimation;
+import com.pla.smart_npc.entity.PlayerNpcEntity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
@@ -73,6 +75,13 @@ public class PlayerNpcPatch extends CEHumanoidPatch<PathfinderMob> implements Cu
         super.updateMotion(considerInaction);
 
         PathfinderMob original = this.getOriginal();
+        if (original instanceof PlayerNpcEntity playerNpc
+                && EpicFightAiAnimation.isDiggingAnimationActive(playerNpc)) {
+            this.currentLivingMotion = LivingMotions.DIGGING;
+            this.currentCompositeMotion = LivingMotions.DIGGING;
+            return;
+        }
+
         if ((original.isShiftKeyDown() || original.isCrouching())
                 && (this.currentLivingMotion == LivingMotions.IDLE
                 || this.currentLivingMotion == LivingMotions.WALK

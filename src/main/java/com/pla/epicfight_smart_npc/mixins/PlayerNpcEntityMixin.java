@@ -1,6 +1,7 @@
 package com.pla.epicfight_smart_npc.mixins;
 
 import com.pla.epicfight_smart_npc.IdleAnimation;
+import com.pla.epicfight_smart_npc.access.PlayerNpcDiggingAnimationAccess;
 import com.pla.epicfight_smart_npc.access.PlayerNpcIdleAnimationAccess;
 import com.pla.epicfight_smart_npc.goal.KeepPositionGoal;
 import com.pla.epicfight_smart_npc.util.CombatBehaviour;
@@ -9,6 +10,9 @@ import com.pla.epicfight_smart_npc.util.EpicfightUtil;
 import com.pla.smart_npc.clazz.FakePlayer;
 import com.pla.smart_npc.entity.PlayerNpcEntity;
 import com.pla.smart_npc.task.DelayedTask;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.server.level.ServerLevel;
@@ -29,7 +33,11 @@ import java.util.Objects;
 import java.util.Random;
 
 @Mixin(value = PlayerNpcEntity.class, remap = false)
-public abstract class PlayerNpcEntityMixin extends FakePlayer implements PlayerNpcIdleAnimationAccess {
+public abstract class PlayerNpcEntityMixin extends FakePlayer implements PlayerNpcIdleAnimationAccess, PlayerNpcDiggingAnimationAccess {
+    @Unique
+    private static final EntityDataAccessor<Boolean> EPICFIGHT_SMART_NPC_DIGGING_ANIMATION_ACTIVE =
+            SynchedEntityData.defineId(PlayerNpcEntity.class, EntityDataSerializers.BOOLEAN);
+
     @Shadow
     private int stunEscapeCooldown;
 
@@ -84,6 +92,21 @@ public abstract class PlayerNpcEntityMixin extends FakePlayer implements PlayerN
         this.epicfightSmartNpc$idleAnimationChoice = null;
         this.epicfightSmartNpc$idleAnimation = null;
         this.epicfightSmartNpc$playingIdle = false;
+    }
+
+    @Override
+    public boolean epicfightSmartNpc$isDiggingAnimationActive() {
+        return this.entityData.get(EPICFIGHT_SMART_NPC_DIGGING_ANIMATION_ACTIVE);
+    }
+
+    @Override
+    public void epicfightSmartNpc$setDiggingAnimationActive(boolean active) {
+        this.entityData.set(EPICFIGHT_SMART_NPC_DIGGING_ANIMATION_ACTIVE, active);
+    }
+
+    @Inject(method = "defineSynchedData", at = @At("TAIL"))
+    private void epicfightSmartNpc$defineDiggingAnimationData(CallbackInfo ci) {
+        this.entityData.define(EPICFIGHT_SMART_NPC_DIGGING_ANIMATION_ACTIVE, false);
     }
 
     @Inject(method = "registerGoals", at = @At("TAIL"))

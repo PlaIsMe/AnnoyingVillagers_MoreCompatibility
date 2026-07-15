@@ -38,6 +38,18 @@ public abstract class BreakingBlockAiMixin {
         EpicFightAiAnimation.updateDigging(this.playerNpc, callbackInfo.getReturnValue() == BreakingBlockAi.TickResult.RUNNING);
     }
 
+    @Inject(
+            method = "tickMiningSwing",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lcom/pla/smart_npc/entity/PlayerNpcEntity;triggerMainHandAttackAnimation()V",
+                    shift = At.Shift.AFTER
+            )
+    )
+    private void epicfightSmartNpc$playMiningSwingAnimation(CallbackInfo callbackInfo) {
+        EpicFightAiAnimation.playMainHandAttack(this.playerNpc);
+    }
+
     @Inject(method = "stop", at = @At("TAIL"))
     private void epicfightSmartNpc$stopDiggingAnimation(CallbackInfo callbackInfo) {
         EpicFightAiAnimation.updateDigging(this.playerNpc, false);

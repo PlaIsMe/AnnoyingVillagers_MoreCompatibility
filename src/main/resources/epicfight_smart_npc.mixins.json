@@ -6,7 +6,6 @@
   "refmap": "epicfight_smart_npc.mixins.refmap.json",
   "mixins": [
     "ai.BreakingBlockAiMixin",
-    "ai.PillarUpAiMixin",
     "BeingAtHomeGoalMixin",
     "goal.EscapeHoleWithBlockGoalMixin",
     "PlayerNpcEntityMixin",
